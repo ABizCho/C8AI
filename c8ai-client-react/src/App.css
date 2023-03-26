@@ -1,3 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  letter-spacing: 1px;
+}
+
+@font-face {
+  font-family: "NotoSansLao";
+
+  src: url("./assets/fonts/NotoSansLao-ExtraBold.ttf");
+}
+
+@font-face {
+  font-family: "peaceSans";
+
+  src: url("./assets/fonts/PeaceSans.ttf");
+}
+
+@font-face {
+  font-family: "morganBold";
+
+  src: url("./assets/fonts/Morganite-Bold.ttf");
+}
+
 /* mini phone */
 .container {
   width: 100%;
@@ -31,7 +55,6 @@
   }
 }
 
-
 :root {
   --colorFg1: #888;
   --colorFg2: #6b7684;
@@ -55,6 +78,25 @@
   color: white;
 }
 
+/* By ClassName */
+
+/* header */
+
+.navbar-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+}
+.navbar-brand-logo {
+  display: flex;
+}
+.navbar-item-link > span {
+  font-family: "morganBold";
+  font-size: 50px;
+}
+
+/* footer */
+
 footer {
   background-color: var(--colorBg2);
 }
@@ -63,7 +105,7 @@ footer * {
   color: var(--colorFg1);
 }
 
-footer a {
+a {
   text-decoration-line: none;
   color: var(--main-txt-color-dark);
 }

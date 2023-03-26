@@ -42,4 +42,94 @@ function App() {
   );
 }
 
+// import React from "react";
+// import styled from "styled-components";
+
+// const Container = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// `;
+
+// const Title = styled.h1`
+//   font-size: 32px;
+//   color: #333;
+// `;
+
+// const Content = styled.div`
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
+//   width: 100%;
+// `;
+
+// const Item = styled.div`
+//   width: calc(33.33% - 20px);
+//   margin-bottom: 20px;
+
+//   @media (max-width: 768px) {
+//     width: calc(50% - 20px);
+//   }
+
+//   @media (max-width: 480px) {
+//     width: 100%;
+//   }
+// `;
+
+// const Image = styled.img`
+//   width: 100%;
+// `;
+
+// const Text = styled.p`
+//   font-size: 16px;
+//   color: #666;
+// `;
+
+// const App = () => {
+//   return (
+//     // <Container>
+//     //   <Title>My Responsive Web</Title>
+//     <Content>
+//       <Item>
+//         <Image src="image1.jpg" />
+//         <Text>Image 1</Text>
+//       </Item>
+//       <Item>
+//         <Image src="image2.jpg" />
+//         <Text>Image 2</Text>
+//       </Item>
+//       <Item>
+//         <Image src="image3.jpg" />
+//         <Text>Image 3</Text>
+//       </Item>
+//       <Item>
+//         <Image src="image4.jpg" />
+//         <Text>Image 4</Text>
+//       </Item>
+//       <Item>
+//         <Image src="image5.jpg" />
+//         <Text>Image 5</Text>
+//       </Item>
+//       <Item>
+//         <Image src="image6.jpg" />
+//         <Text>Image 6</Text>
+//       </Item>
+//       <Item>
+//         <Image src="image6.jpg" />
+//         <Text>Image 6</Text>
+//       </Item>
+//       <Item>
+//         <Image src="image6.jpg" />
+//         <Text>Image 6</Text>
+//       </Item>
+//       <Item>
+//         <Image src="image6.jpg" />
+//         <Text>Image 6</Text>
+//       </Item>
+//     </Content>
+//     // </Container>
+//   );
+// };
+
 export default App;
