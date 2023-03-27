@@ -1,13 +1,14 @@
 import React from "react";
-import { GridItem, GridContainer } from "../components/Grid/Grid";
+import { GridItemWrap, GridContainer } from "../components/Grid/Grid";
+import AIINFO from "./aiInfo.json";
 
 export default function Home(): JSX.Element {
   return (
     <div className="main-section-wrap">
       <IntroSec />
-      <MagazineSec />
-      <TodoSec />
       <CoreSec />
+      <TodoSec />
+      <MagazineSec />
     </div>
   );
 }
@@ -53,14 +54,35 @@ const CoreSec = () => {
         </div>
         <div className="container core-container">
           <GridContainer>
-            <GridItem>A</GridItem>
-            <GridItem>B</GridItem>
-            <GridItem>C</GridItem>
-            <GridItem>D</GridItem> <GridItem>E</GridItem>
-            <GridItem>F</GridItem>
+            {AIINFO.map((v) => (
+              <GridItemWrap>
+                <GridItemInner
+                  id={v.id}
+                  nameKo={v.ko?.name}
+                  categoryKo={v.ko?.category}
+                />
+              </GridItemWrap>
+            ))}
           </GridContainer>
         </div>
       </div>
     </section>
   );
+};
+
+// type Bilingual =
+//   | {
+//       ko: string;
+//       en: string;
+//     }
+//   | { ko: string[]; en: string[] };
+
+interface AiCardProps {
+  id: string | undefined;
+  nameKo: string[] | string | undefined;
+  categoryKo: string[] | string | undefined;
+}
+
+const GridItemInner = ({ id, nameKo, categoryKo }: AiCardProps) => {
+  return <div>{id}</div>;
 };

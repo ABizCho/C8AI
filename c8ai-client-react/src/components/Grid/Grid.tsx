@@ -4,7 +4,7 @@ import styled from "styled-components";
 //   return <div></div>;
 // };
 
-const GridItem = styled.div`
+const GridItemWrap = styled.div`
   max-width: 100%;
   width: 100%;
   flex: 1 1 auto;
@@ -21,4 +21,4 @@ const GridContainer = styled.div`
 
   justify-content: flex-start;
 `;
-export { GridItem, GridContainer };
+export { GridItemWrap, GridContainer };
