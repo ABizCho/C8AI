@@ -1,3 +1,23 @@
+:root {
+  --colorFg1: #888;
+  --colorFg2: #6b7684;
+  --colorFg3: #fff;
+  --colorBg1: #191f28;
+  --colorBg2: #111;
+
+  --shadow-modal: rgba(0, 0, 0, 0.09) 0px 3px 12px 0px;
+  --radius1: 10px;
+  --radius2: 20px;
+  --radius3: 40px;
+
+  --bpPcSuper: 1339;
+  --bpPc: 1024;
+  --bpTablet: 768;
+  --bpPhoneMedium: 576;
+  --pbPhoneSmall: 325;
+}
+
+/* Common */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
 * {
   font-family: "Noto Sans KR", sans-serif;
@@ -22,47 +42,6 @@
   src: url("./assets/fonts/Morganite-Bold.ttf");
 }
 
-/* mini phone */
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-/* phone */
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-/* tablet */
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-/* desktop */
-@media (min-width: 1024px) {
-  .container {
-    max-width: 960px;
-  }
-}
-/* super desktop */
-@media (min-width: 1440px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-
-:root {
-  --colorFg1: #888;
-  --colorFg2: #6b7684;
-  --colorFg3: #fff;
-  --colorBg1: #191f28;
-  --colorBg2: #111;
-}
-
 .App {
   text-align: center;
 }
@@ -76,6 +55,11 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+a {
+  text-decoration-line: none;
+  color: var(--main-txt-color-dark);
 }
 
 /* By ClassName */
@@ -105,12 +89,95 @@ footer * {
   color: var(--colorFg1);
 }
 
-a {
-  text-decoration-line: none;
-  color: var(--main-txt-color-dark);
-}
-
 .section_terms-wrapper {
   font-size: 12px;
   margin-top: 15px;
+}
+
+/* main-Home */
+
+.main-section-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-section {
+  margin: 60px 0;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  /* width: 100%; */
+
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.coreSec-search {
+  border-radius: var(--radius3);
+
+  min-width: 100px;
+  margin: 60px 12%;
+  padding: 10px 60px;
+  height: 50px;
+}
+.coreSec-itemBox {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-gap: 16px;
+  align-items: start;
+}
+
+.coreSec-categoryBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Responsive */
+/* mini phone */
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+/* phone */
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+/* tablet */
+@media (max-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+  .coreSec-itemBox {
+    align-content: center;
+    grid-template-columns: 1fr;
+  }
+
+  .coreSec-categoryBox {
+    flex-direction: row;
+    gap: 4px;
+    overflow: visible;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    padding: 16px;
+    margin: -12px;
+  }
+}
+/* desktop */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+}
+/* super desktop */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1140px;
+  }
 }

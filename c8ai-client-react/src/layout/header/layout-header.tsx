@@ -16,13 +16,6 @@ export function LayoutHeader() {
           </div>
         </a>
       </div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">header</Link>
-          </li>
-        </ul>
-      </nav>
     </div>
   );
 }
