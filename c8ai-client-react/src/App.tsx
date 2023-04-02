@@ -9,6 +9,7 @@ import store from "./store";
 import "./App.css";
 import Home2 from "./routes/Home2";
 import Home from "./routes/Home";
+import FullPage from "./sections/FilterTest";
 
 function App() {
   // const name = this.props.name;
@@ -30,11 +31,8 @@ function App() {
               />
             }
           >
-            <Route
-              element={<Home />}
-              index
-              //index는 동일 경로 상 가장 우선순위로 렌더링 될 컴포넌트 지정
-            />
+            <Route element={<Home />} index />
+            <Route path="/fullpage" element={<FullPage />} />
           </Route>
         </Routes>
       </Provider>
