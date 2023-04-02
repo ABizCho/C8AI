@@ -11,8 +11,9 @@ export function LayoutFooter() {
         <section className="section_service-list"></section>
         <section className="section_address"></section>
         <section className="section_terms-wrapper">
-          {TERMS.map((term) => (
+          {TERMS.map((term, idx) => (
             <a
+              key={idx}
               href={term.dest}
               role="button"
               aria-expanded="false"

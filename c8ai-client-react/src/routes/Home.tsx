@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import CoreSec from "../sections/home/CoreSec";
 
 export default function Home(): JSX.Element {
+  const [arrAi, setArrAi] = useState([]);
+
   return (
     <div className="main-section-wrap">
       <IntroSec />
@@ -20,6 +22,7 @@ const IntroSec = () => {
     </section>
   );
 };
+
 const MagazineSec = () => {
   return (
     <section className="content-section">

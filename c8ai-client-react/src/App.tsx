@@ -7,7 +7,7 @@ import { LayoutFooter } from "./layout/footer/layout-footer";
 import { LayoutHeader } from "./layout/header/layout-header";
 import store from "./store";
 import "./App.css";
-import Home2 from "./routes/Home2";
+
 import Home from "./routes/Home";
 import FullPage from "./sections/FilterTest";
 

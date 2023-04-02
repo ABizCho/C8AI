@@ -6,13 +6,15 @@ import styled from "styled-components";
 
 const GridItemWrap = styled.div`
   max-width: 100%;
+  max-height: 10%
   width: 100%;
+  height: 225px;
   flex: 1 1 auto;
   border-radius: 10px;
   box-shadow: var(--shadow-modal);
 `;
 
-const GridContainer = styled.div`
+const GridBox = styled.div`
   width: 100%;
 
   display: grid;
@@ -21,4 +23,4 @@ const GridContainer = styled.div`
 
   justify-content: flex-start;
 `;
-export { GridItemWrap, GridContainer };
+export { GridItemWrap, GridBox };
