@@ -59,7 +59,7 @@ const GridContainer = ({ arrAi, searchWord }: GridContainerProps) => {
     <div className="container">
       <GridBox>
         {filteredAis.map((v, idx) => (
-          <GridItemWrap key={idx}>
+          <GridItemWrap key={idx} style={{ width: "270px" }}>
             <AiGridItemInner
               key={v.id}
               imgUrl={v.imgUrl}
@@ -75,12 +75,12 @@ const GridContainer = ({ arrAi, searchWord }: GridContainerProps) => {
 };
 const AiGridItemInner = ({ id, imgUrl, nameKo, categoryKo }: AiCardProps) => {
   return (
-    <>
+    <div style={{ textAlign: "center" }}>
       {/* <img src={imgUrl} /> */}
       <div>{id}</div>
       <div>{nameKo}</div>
       <div>{categoryKo}</div>
-    </>
+    </div>
   );
 };
 
