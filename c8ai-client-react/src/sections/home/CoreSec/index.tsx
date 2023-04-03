@@ -72,12 +72,11 @@ const GridContainer = ({ arrAi, searchWord }: GridContainerProps) => {
       );
     });
   }
-
   if (enPattern.test(searchWord)) {
     filteredData = EnAutoComplete(searchWord, arrAi);
   } else if (koPattern.test(searchWord)) {
     filteredData = KoAutoComplete(searchWord, arrAi);
-  } else filteredData = [];
+  } else filteredData = arrAi;
 
   console.log(filteredData);
 
