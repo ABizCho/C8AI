@@ -2,6 +2,8 @@
 
 ## [ 04.04 ]
 
+## [ 04.03 ]
+
 ### 1. Django init & 기본설정
 
 ### 2. core 하위 앱 추가, mvp수준 models,serializers,views,urls 작성
@@ -55,6 +57,19 @@ class AiToolSerializer(serializers.ModelSerializer):
         fields = ('id', 'imgUrl', 'ko', 'en')
 ```
 
+
 1. AiTools CRUD를 위한 views.py 파일을 작성
    - create_aiTools(), getall_aiTools(), get_aiTools()
+
+<br>
+<br>
+
+<img src="./brandsrc/mdSrc/back_core_domlist.png">
+
+<img src="./brandsrc/mdSrc/back_core_firstPost.png">
+<img src="./brandsrc/mdSrc/back_core_firstGet.png">
+
+<img src="./brandsrc/mdSrc/back_core_firstGetAll_errSolve.png">
+
+<img src="./brandsrc/mdSrc/back_core_firstGetAll.png">
 
