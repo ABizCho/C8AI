@@ -8,5 +8,5 @@ from django.http import HttpResponse, JsonResponse # for test
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('core/', include('core')),
+    path('core/', include('core.urls')),
 ]
