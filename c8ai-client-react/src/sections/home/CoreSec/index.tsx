@@ -25,12 +25,12 @@ interface AiCardProps {
 
 interface GridContainerProps {
   arrAi: AiDataType[];
-  searchWord: String;
+  searchWord: string;
 }
 
 const CoreSec = () => {
   const [arrAi, setArrAi] = useState<AiDataType[]>([]);
-  const [searchWord, setSearchWord] = useState<String>("");
+  const [searchWord, setSearchWord] = useState<string>("");
 
   useEffect(() => {
     setArrAi(AIINFO as AiDataType[]);
@@ -49,16 +49,42 @@ const CoreSec = () => {
 };
 
 const GridContainer = ({ arrAi, searchWord }: GridContainerProps) => {
-  const filteredAis = arrAi.filter((anAi) => {
-    return anAi.id
-      .replace(" ", "")
-      .toLocaleLowerCase()
-      .includes(searchWord.toLocaleLowerCase().replace(" ", ""));
-  });
+  const enPattern = /[a-zA-Z]/;
+  const koPattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+  let filteredData: AiDataType[];
+
+  function KoAutoComplete(searchWord: any, data: any): AiDataType[] {
+    // console.log("ko-filter");
+    return data.filter((item: any) => {
+      return (
+        item.ko.name.some((name: any) => name.includes(searchWord)) ||
+        item.ko.category.some((category: any) => category.includes(searchWord))
+      );
+    });
+  }
+
+  function EnAutoComplete(searchWord: any, data: any): AiDataType[] {
+    // console.log("en-filter");
+    return data.filter((item: any) => {
+      return (
+        item.en.name.some((name: any) => name.includes(searchWord)) ||
+        item.en.category.some((category: any) => category.includes(searchWord))
+      );
+    });
+  }
+
+  if (enPattern.test(searchWord)) {
+    filteredData = EnAutoComplete(searchWord, arrAi);
+  } else if (koPattern.test(searchWord)) {
+    filteredData = KoAutoComplete(searchWord, arrAi);
+  } else filteredData = [];
+
+  console.log(filteredData);
+
   return (
     <div className="container">
       <GridBox>
-        {filteredAis.map((v, idx) => (
+        {filteredData.map((v, idx) => (
           <GridItemWrap key={idx} style={{ width: "270px" }}>
             <AiGridItemInner
               key={v.id}

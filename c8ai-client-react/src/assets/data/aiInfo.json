@@ -1,25 +1,25 @@
 [
   {
-    "id": "chatgpt",
+    "id": "1",
     "imgUrl": "images/logoAis/chatgpt.jpg",
     "ko": {
-      "name": ["챗지피티", "챗쥐피티", "쥐피티"],
+      "name": ["챗지피티", "챗쥐피티"],
       "category": ["대화형", "챗봇", "대화", "글쓰기", "교육"]
     },
     "en": {
-      "name": ["chatGPT", "GPT"],
+      "name": ["chatGPT"],
       "category": ["chat", "writing", "write", "teach", "learn"]
     }
   },
   {
-    "id": "midjourney",
+    "id": "2",
     "imgUrl": "images/logoAis/midjourney.jpeg",
     "ko": {
       "name": ["미드저니", "미드져니", "미드절니"],
       "category": ["그림", "화가", "사진", "디자인", "디자이너"]
     },
     "en": {
-      "name": ["midjourney", "mid"],
+      "name": ["midjourney"],
       "category": [
         "drawing",
         "artist",
@@ -32,7 +32,7 @@
     }
   },
   {
-    "id": "dalle",
+    "id": "3",
     "imgUrl": "images/logoAis/dalle.png",
     "ko": {
       "name": ["달리"],
@@ -52,7 +52,7 @@
     }
   },
   {
-    "id": "dalle",
+    "id": "4",
     "imgUrl": "images/logoAis/dalle.png",
     "ko": {
       "name": ["달리"],
