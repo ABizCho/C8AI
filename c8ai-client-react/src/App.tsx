@@ -9,7 +9,6 @@ import store from "./store";
 import "./App.css";
 
 import Home from "./routes/Home";
-import FullPage from "./sections/FilterTest";
 
 function App() {
   // const name = this.props.name;
@@ -32,7 +31,6 @@ function App() {
             }
           >
             <Route element={<Home />} index />
-            <Route path="/fullpage" element={<FullPage />} />
           </Route>
         </Routes>
       </Provider>
