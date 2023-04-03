@@ -11,6 +11,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    # path('/', ),
     path('aitools/', views.create_aiTool, name='create_aiTool'),
     path('aitools/<int:pk>/', views.get_aiTool, name='get_aiTool'),
     path('aitools/all/', views.getall_aiTool, name='getall_aiTool'),
