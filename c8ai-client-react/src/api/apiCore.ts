@@ -10,8 +10,8 @@ const API: AxiosInstance = axios.create({
 });
 
 const getAllAItools = async (): Promise<IAiTool[]> => {
-  const { data } = await API.get<IAiTool[]>("/aitools/all/");
-  return data;
+  const response = await API.get<IAiTool[]>("/aitools/all/");
+  return response.data;
 };
 
 const getAItool = async (id: string): Promise<IAiTool> => {
@@ -25,10 +25,11 @@ const createAItool = async (tool: IAiTool): Promise<IAiTool> => {
 };
 
 export function useAllAItools(): UseQueryResult<IAiTool[], Error> {
-  return useQuery("allAItools", getAllAItools, {
-    staleTime: 1000 * 60, // 1분 동안 캐시된 데이터 사용
-    cacheTime: 1000 * 60 * 10, // 10분 동안 데이터 캐싱
-  });
+  // return useQuery("allAItools", getAllAItools, {
+  //   staleTime: 1000 * 60, // 1분 동안 캐시된 데이터 사용
+  //   cacheTime: 1000 * 60 * 10, // 10분 동안 데이터 캐싱
+  // });
+  return useQuery("allAItools", getAllAItools);
 }
 
 export function useAItool(id: string): UseQueryResult<IAiTool, Error> {

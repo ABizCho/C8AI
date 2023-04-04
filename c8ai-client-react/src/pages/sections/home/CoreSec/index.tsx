@@ -18,23 +18,24 @@ export default function CoreSec() {
   const [searchWord, setSearchWord] = useState<string>("");
   const { data, isLoading, error, refetch } = useAllAItools();
 
-  // useEffect(() => {
-  //   setArrAi(AIINFO as IAiTool[]);
-  //   console.log(arrAi);
-  // }, []);
-
+  // local dev 빌드용
   useEffect(() => {
-    async function fetchData() {
-      const result = await refetch(); // refetch 함수를 사용하여 데이터를 가져옵니다.
-      if (!error && !isLoading && result.data) {
-        let arr: any = Object.values(result.data)[0];
-        console.log("useEffect-fetch", arr);
+    setArrAi(AIINFO as IAiTool[]);
+    console.log(arrAi);
+  }, []);
 
-        setArrAi(arr as IAiTool[]); // 가져온 데이터를
-      }
-    }
-    fetchData();
-  }, [refetch, error, isLoading, setArrAi]);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const result = await refetch(); // refetch 함수를 사용하여 데이터를 가져옵니다.
+  //     if (!error && !isLoading && result.data) {
+  //       let arr: any = Object.values(result.data)[0];
+  //       console.log("useEffect-fetch", arr);
+
+  //       setArrAi(arr as IAiTool[]); // 가져온 데이터를
+  //     }
+  //   }
+  //   fetchData();
+  // }, [refetch, error, isLoading, setArrAi]);
 
   return (
     <section className=" content-section">
@@ -79,7 +80,9 @@ const GridAiTools = ({ arrAi, searchWord, isFetched }: IGridAiToolParams) => {
     filteredData = EnAutoComplete(searchWord, arrAi);
   } else if (koPattern.test(searchWord)) {
     filteredData = KoAutoComplete(searchWord, arrAi);
-  } else filteredData = isFetched === true ? [] : arrAi;
+  }
+  // else filteredData = isFetched === true ? [] : arrAi;
+  else filteredData = arrAi;
 
   console.log("GridAiTools: ", filteredData);
 
