@@ -2,13 +2,17 @@ import React from "react";
 import { Provider } from "react-redux";
 import { Outlet, Routes, Route } from "react-router-dom";
 
+import { QueryClient, QueryClientProvider } from "react-query";
+
 import { Layout } from "./layout/layout";
 import { LayoutFooter } from "./layout/footer/layout-footer";
 import { LayoutHeader } from "./layout/header/layout-header";
 import store from "./store";
 import "./App.css";
 
-import Home from "./routes/Home";
+import Home from "./pages/Home";
+
+const queryClient = new QueryClient();
 
 function App() {
   // const name = this.props.name;
@@ -16,24 +20,26 @@ function App() {
   return (
     <div className="App">
       {/* <img className="img-logo" src={imgUrl} alt={`logo`} title={`logo`} /> */}
-      <Provider store={store}>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              // 콜백으로 컴포넌트 전달하는 이유가 있나? 가독성은 떨어져보이는데. https://github.com/ABizCho/react-redux-typescript-guide 참고한 코드임
-              <Layout
-                renderHeader={() => <LayoutHeader />}
-                renderFooter={() => <LayoutFooter />}
-                // Outlet : 자식경로에 해당하는 컴포넌트를 렌더링하는 역할
-                renderContent={() => <Outlet />}
-              />
-            }
-          >
-            <Route element={<Home />} index />
-          </Route>
-        </Routes>
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                // 콜백으로 컴포넌트 전달하는 이유가 있나? 가독성은 떨어져보이는데. https://github.com/ABizCho/react-redux-typescript-guide 참고한 코드임
+                <Layout
+                  renderHeader={() => <LayoutHeader />}
+                  renderFooter={() => <LayoutFooter />}
+                  // Outlet : 자식경로에 해당하는 컴포넌트를 렌더링하는 역할
+                  renderContent={() => <Outlet />}
+                />
+              }
+            >
+              <Route element={<Home />} index />
+            </Route>
+          </Routes>
+        </Provider>
+      </QueryClientProvider>
     </div>
   );
 }
