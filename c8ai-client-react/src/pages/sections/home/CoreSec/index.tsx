@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 
-import axios from "axios";
-import { useQuery, UseQueryResult } from "react-query";
-
 import { GridItemWrap, GridBox } from "../../../../components/Grid";
 import AIINFO from "../../../../assets/data/aiInfo.json";
+
 import {
   IAiTool,
   IAiCardParams,
@@ -28,6 +26,21 @@ export default function CoreSec() {
     async function fetchData() {
       const result = await refetch(); // refetch 함수를 사용하여 데이터를 가져옵니다.
       if (!error && !isLoading && result.data) {
+        // let arr: IAiTool[] = [
+        //   {
+        //     id: "",
+        //     imgUrl: "",
+        //     ko: {
+        //       name: [""],
+        //       category: [""],
+        //     },
+        //     en: {
+        //       name: [""],
+        //       category:[""]
+        //     }
+        //   }
+        // ]
+        // console.log(Object.values(result.data));
         let arr: any = Object.values(result.data)[0];
         console.log("useEffect-fetch", arr);
 
