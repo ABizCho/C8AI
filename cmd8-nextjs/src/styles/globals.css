@@ -27,10 +27,7 @@
 
 /* Common */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
-* {
-  font-family: "Noto Sans KR", sans-serif;
-  letter-spacing: 1px;
-}
+
 @font-face {
   font-family: "NotoSansLao";
 
@@ -57,6 +54,73 @@
   }
 }
 
+/* ==Global== */
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Header */
+
+header {
+}
+
+.nav-bar {
+  background-color: #1f2937;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.nav-container {
+  max-width: 70rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.logo-container {
+  flex-shrink: 0;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  margin-right: 0.5rem;
+}
+
+.logo-text {
+  font-family: "MorganBold", sans-serif;
+  font-size: 3rem;
+  color: #fff;
+}
+
+/* Footer */
+footer {
+  display: block;
+  min-height: auto;
+  background-color: var(--colorBg2);
+}
+
+footer * {
+  color: var(--colorFg1);
+}
+
+.inner_footer {
+  padding: 15px 0;
+  display: block;
+}
+.section_terms-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  font-size: 12px;
+}
+
+/* main */
+
 body {
   /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -65,4 +129,16 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  min-height: 100vh; /* 화면 높이 최소값 */
+}
+
+#__next {
+  min-height: 100vh; /* 화면 높이 최소값 */
+}
+
+main {
+  min-height: calc(100vh - 258px); /* 화면 높이에서 header와 footer 높이 제외 */
 }
