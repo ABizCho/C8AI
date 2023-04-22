@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --colorFg1: #888;
+  --colorFg2: #6b7684;
+  --colorFg3: #fff;
+  --colorBg1: #191f28;
+  --colorBg2: #111;
+
+  --shadow-modal: rgba(0, 0, 0, 0.09) 0px 3px 12px 0px;
+  --radius1: 10px;
+  --radius2: 20px;
+  --radius3: 40px;
+
+  --bpPcSuper: 1339;
+  --bpPc: 1024;
+  --bpTablet: 768;
+  --bpPhoneMedium: 576;
+  --pbPhoneSmall: 325;
+}
+
+/* Common */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap");
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  letter-spacing: 1px;
+}
+@font-face {
+  font-family: "NotoSansLao";
+
+  src: url("/fonts/NotoSansLao-ExtraBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "peaceSans";
+
+  src: url("/fonts/PeaceSans.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "morganBold";
+
+  src: url("/fonts/Morganite-Bold.ttf") format("truetype");
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  /* color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); */
+}
