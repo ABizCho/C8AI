@@ -26,6 +26,9 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^2.1.1"
+    "@types/styled-components": "^5.1.26",
+    "babel-plugin-styled-components": "^2.1.1",
+    "i": "^0.3.7",
+    "npm": "^9.6.5"
   }
 }
