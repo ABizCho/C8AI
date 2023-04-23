@@ -8,6 +8,7 @@ import { GridBox, GridItemWrap } from "@/components/ui/Grid";
 import { IAiCardParams, IAiTool, IGridAiToolParams } from "@/interfaces/main";
 
 export default function Main({ aiTools }: { aiTools: IAiTool[] }): JSX.Element {
+  console.log(aiTools);
   return (
     <div className="main-section-wrap">
       <IntroSec />
@@ -52,14 +53,14 @@ const TodoSec = () => {
 const CoreSec = ({ aiTools }: { aiTools: any }) => {
   const [searchWord, setSearchWord] = useState<string>("");
 
-  console.log("aiTools", aiTools.aiTools);
+  console.log("aiTools", aiTools);
 
   return (
     <section className=" content-section">
       <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
       <div className="coreSec-itemBox">
         <CategorySelectBar />
-        <GridAiTools arrAi={aiTools.aiTools} searchWord={searchWord} />
+        <GridAiTools arrAi={aiTools} searchWord={searchWord} />
       </div>
     </section>
   );
@@ -98,6 +99,9 @@ const GridAiTools = ({ arrAi, searchWord }: IGridAiToolParams) => {
   } else {
     filteredData = arrAi;
   }
+
+  console.log("filteredData:", filteredData);
+  console.log("filteredData:", typeof filteredData);
 
   return (
     <div className="container">

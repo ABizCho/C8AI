@@ -6,9 +6,12 @@ import { IAiTool } from "@/interfaces/main";
 import { getAllAITools, useAllAItools } from "../lib/api/core";
 import { GetStaticProps } from "next";
 
+import AIINFO from "../../public/data/aiInfo.json";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ aiTools }: { aiTools: IAiTool[] }) {
+  console.log("@@@@@@@@@@@@@@@@ aiTools: ", aiTools);
   return (
     <Layout home>
       <Main aiTools={aiTools} />
@@ -18,8 +21,18 @@ export default function Home({ aiTools }: { aiTools: IAiTool[] }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const aiTools = await getAllAITools();
+  let aiTools: any;
 
+  try {
+    // 서버에서 데이터 가져오기
+    aiTools = await getAllAITools();
+    console.log(aiTools);
+    aiTools = aiTools.aiTools;
+  } catch (error: any) {
+    // 서버 실패 시, Public data 참조
+    console.log("server req failed,", error.message);
+    aiTools = AIINFO;
+  }
   return {
     props: {
       aiTools,
