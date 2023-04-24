@@ -67,37 +67,20 @@ const CoreSec = ({ aiTools }: { aiTools: any }) => {
 };
 
 //////
+
 const GridAiTools = ({ arrAi, searchWord }: IGridAiToolParams) => {
   const enPattern = /[a-zA-Z]/;
   const koPattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
   let filteredData: IAiTool[];
 
-  function KoAutoComplete(searchWord: any, data: any): IAiTool[] {
-    // console.log("ko-filter");
-    return data.filter((item: any) => {
-      return (
-        item.ko.name.some((name: any) => name.includes(searchWord)) ||
-        item.ko.category.some((category: any) => category.includes(searchWord))
-      );
-    });
-  }
-
-  function EnAutoComplete(searchWord: any, data: any): IAiTool[] {
-    // console.log("en-filter");
-    return data.filter((item: any) => {
-      return (
-        item.en.name.some((name: any) => name.includes(searchWord)) ||
-        item.en.category.some((category: any) => category.includes(searchWord))
-      );
-    });
-  }
+  console.log("##### arrAi", arrAi);
 
   if (enPattern.test(searchWord)) {
     filteredData = EnAutoComplete(searchWord, arrAi);
   } else if (koPattern.test(searchWord)) {
     filteredData = KoAutoComplete(searchWord, arrAi);
   } else {
-    filteredData = arrAi;
+    filteredData = arrAi || [];
   }
 
   console.log("filteredData:", filteredData);
@@ -163,3 +146,23 @@ const CategorySelectBar = (): JSX.Element => {
     </div>
   );
 };
+
+function KoAutoComplete(searchWord: any, arrAi: IAiTool[]): IAiTool[] {
+  // console.log("ko-filter");
+  return arrAi.filter((item: any) => {
+    return (
+      item.ko.name.some((name: any) => name.includes(searchWord)) ||
+      item.ko.category.some((category: any) => category.includes(searchWord))
+    );
+  });
+}
+
+function EnAutoComplete(searchWord: any, arrAi: IAiTool[]): IAiTool[] {
+  // console.log("en-filter");
+  return arrAi.filter((item: any) => {
+    return (
+      item.en.name.some((name: any) => name.includes(searchWord)) ||
+      item.en.category.some((category: any) => category.includes(searchWord))
+    );
+  });
+}
