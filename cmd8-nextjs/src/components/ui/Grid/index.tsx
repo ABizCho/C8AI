@@ -1,10 +1,16 @@
 import tw from "tailwind-styled-components";
 
-const GridItemWrap = tw.div`
-  max-w-full max-h-10% w-full h-225px flex-1 rounded-10 shadow-modal
+const GridBox = tw.div`
+w-full grid grid-cols-2 grid-flow-row gap-4 place-items-center justify-start
+
+
+md:grid-cols-3
+lg:grid-cols-4
+
 `;
 
-const GridBox = tw.div`
-  w-full grid grid-cols-auto-fit grid-flow-row gap-4 place-items-center justify-start
+const GridItemWrap = tw.div`
+  max-w-full w-full h-225px flex-1 rounded-10 shadow-modal
 `;
+
 export { GridItemWrap, GridBox };
