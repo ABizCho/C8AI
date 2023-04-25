@@ -102,10 +102,10 @@ const CategorySelectBar = (): JSX.Element => {
 // 반응형으로 Layout을 변경할 경우, 이처럼 tailwind-styld-components를 사용하는 원칙 수립
 const ToolsContainer = tw.div`
   flex flex-col gap-4 
-  md:flex-row
+  sm:flex-row
 `;
 
 const CategoryBox = tw.div`
 	flex flex-row mx-10 gap-4
-	md:flex-col
+	sm:flex-col
 `;

@@ -4,6 +4,7 @@ const GridBox = tw.div`
 w-full grid grid-cols-2 grid-flow-row gap-4 place-items-center justify-start
 
 
+sm:grid-cols-3
 md:grid-cols-3
 lg:grid-cols-4
 
