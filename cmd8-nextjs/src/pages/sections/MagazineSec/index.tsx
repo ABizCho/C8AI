@@ -1,4 +1,4 @@
-import { ContentSection } from "..";
+import { ContentSection } from "@/pages/Main";
 
 const MagazineSec = () => {
   return (

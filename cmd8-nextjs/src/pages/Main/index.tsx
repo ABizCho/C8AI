@@ -1,8 +1,13 @@
 // Main.tsx
 
+import tw from "tailwind-styled-components";
+
 import { IAiTool } from "@/interfaces/main";
 
-import { CoreSec, IntroSec, MagazineSec, TodoSec } from "@/pages/sections";
+import IntroSec from "../sections/IntroSec";
+import CoreSec from "../sections/CoreSec";
+import TodoSec from "../sections/TodoSec";
+import MagazineSec from "../sections/MagazineSec";
 
 export default function Main({ aiTools }: { aiTools: IAiTool[] }): JSX.Element {
   console.log(aiTools);
@@ -15,3 +20,7 @@ export default function Main({ aiTools }: { aiTools: IAiTool[] }): JSX.Element {
     </div>
   );
 }
+
+export const ContentSection = tw.section`
+  my-60
+`;
