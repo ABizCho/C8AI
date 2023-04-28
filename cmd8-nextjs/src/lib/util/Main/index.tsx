@@ -21,7 +21,7 @@ import hangul from "hangul-js";
 //   });
 // }
 
-function KoAutoComplete(searchWord: any, arrAi: IAiTool[]): IAiTool[] {
+function KoAutoComplete(searchWord: string, arrAi: IAiTool[]): IAiTool[] {
   const searchWordArray = hangul.disassemble(searchWord).join("");
 
   return arrAi.map((item) => {
