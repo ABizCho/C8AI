@@ -1,4 +1,5 @@
 import { IAiTool } from "@/interfaces/main";
+import hangul from "hangul-js";
 
 // function KoAutoComplete(searchWord: any, arrAi: IAiTool[]): IAiTool[] {
 //   // console.log("ko-filter");
@@ -20,16 +21,21 @@ import { IAiTool } from "@/interfaces/main";
 //   });
 // }
 
-function KoAutoComplete(searchWord: string, arrAi: IAiTool[]): IAiTool[] {
-  
+function KoAutoComplete(searchWord: any, arrAi: IAiTool[]): IAiTool[] {
+  const searchWordArray = hangul.disassemble(searchWord).join("");
+
   return arrAi.map((item) => {
     const isFilteredOut =
-      !item.ko.name.some((name) =>
-        name.toLowerCase().includes(searchWord.toLowerCase())
-      ) &&
-      !item.ko.category.some((category) =>
-        category.toLowerCase().includes(searchWord.toLowerCase())
-      );
+      !item.ko.name.some((name) => {
+        const nameArray = hangul.disassemble(name).join("");
+        return nameArray.toLowerCase().includes(searchWordArray.toLowerCase());
+      }) &&
+      !item.ko.category.some((category) => {
+        const categoryArray = hangul.disassemble(category).join("");
+        return categoryArray
+          .toLowerCase()
+          .includes(searchWordArray.toLowerCase());
+      });
 
     return {
       ...item,
