@@ -10,7 +10,6 @@ import { GridBox, GridItemWrap } from "@/components/ui/Grid";
 
 const CoreSec = ({ aiTools }: { aiTools: IAiTool[] }) => {
   const [searchWord, setSearchWord] = useState<string>("");
-  aiTools = [];
 
   return (
     <section className=" content-section">
@@ -43,10 +42,10 @@ const SearchBar = ({ searchWord, setSearchWord }: any): JSX.Element => {
   );
 };
 
-const GridAiTools = ({ arrAi, searchWord }: IGridAiToolParams) => {
+const GridAiTools = ({ arrAi = [], searchWord }: IGridAiToolParams) => {
   const enPattern = /[a-zA-Z]/;
   const koPattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-  let filteredData: IAiTool[] = [];
+  let filteredData: IAiTool[];
 
   console.log("#################arrAI:", arrAi);
 
