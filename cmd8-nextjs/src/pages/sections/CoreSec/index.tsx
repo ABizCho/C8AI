@@ -105,7 +105,7 @@ const GridAiTools = ({ arrAi, searchWord }: IGridAiToolParams) => {
             key={idx}
             style={{ width: "270px" }}
             className={`${
-              v.isFilteredOut ? "filtered-out" : "filtered-in"
+              v.isFilteredOut ? "fade-out" : "fade-in"
             } transition-opacity duration-300 grid-item`}
             onAnimationEnd={(e) => onAnimationEnd(e, v.isFilteredOut)}
           >

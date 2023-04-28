@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 @layer utilities {
-  .filtered-in {
-    animation: filteredIn 0.3s forwards;
+  .fade-in {
+    animation: fadeIn 0.3s forwards;
   }
 
-  .filtered-out {
-    animation: filteredOut 0.3s forwards;
+  .fade-out {
+    animation: fadeOut 0.3s forwards;
   }
 
-  @keyframes filteredIn {
+  @keyframes fadeIn {
     0% {
       opacity: 0;
-      transform: translateX(-20%);
+      transform: translateX(-10%);
     }
 
     100% {
@@ -23,7 +23,7 @@
     }
   }
 
-  @keyframes filteredOut {
+  @keyframes fadeOut {
     0% {
       opacity: 1;
       transform: translateX(0);
@@ -31,30 +31,8 @@
 
     100% {
       opacity: 0;
-      transform: translateX(-20%);
+      transform: translateX(-10%);
     }
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-10px);
   }
 }
 
