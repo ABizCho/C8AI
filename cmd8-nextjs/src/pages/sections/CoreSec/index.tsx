@@ -47,7 +47,9 @@ const GridAiTools = ({ arrAi, searchWord }: IGridAiToolParams) => {
   const koPattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
   let filteredData: IAiTool[];
 
-  if (enPattern.test(searchWord)) {
+  if (searchWord === "") {
+    filteredData = arrAi;
+  } else if (enPattern.test(searchWord)) {
     filteredData = EnAutoComplete(searchWord, arrAi);
   } else if (koPattern.test(searchWord)) {
     filteredData = KoAutoComplete(searchWord, arrAi);
@@ -67,12 +69,31 @@ const GridAiTools = ({ arrAi, searchWord }: IGridAiToolParams) => {
   };
 
   useEffect(() => {
+    const enPattern = /[a-zA-Z]/;
+    const koPattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    let filteredData: IAiTool[];
+
     if (searchWord === "") {
-      const gridItems = document.querySelectorAll(".grid-item");
-      gridItems.forEach((item) => {
-        (item as HTMLElement).style.display = "";
-      });
+      filteredData = arrAi;
+    } else if (enPattern.test(searchWord)) {
+      filteredData = EnAutoComplete(searchWord, arrAi);
+    } else if (koPattern.test(searchWord)) {
+      filteredData = KoAutoComplete(searchWord, arrAi);
+    } else {
+      filteredData = arrAi || [];
     }
+
+    console.log("searchWord: ", searchWord);
+
+    const gridItems = document.querySelectorAll(".grid-item");
+    gridItems.forEach((item, index) => {
+      const targetItem = filteredData[index];
+      if (targetItem && !targetItem.isFilteredOut) {
+        (item as HTMLElement).style.display = "";
+      } else {
+        (item as HTMLElement).style.display = "none";
+      }
+    });
   }, [searchWord]);
 
   return (
@@ -102,7 +123,7 @@ const GridAiTools = ({ arrAi, searchWord }: IGridAiToolParams) => {
 };
 const AiGridItemInner = ({ id, imgUrl, nameKo, categoryKo }: IAiCardParams) => {
   return (
-    <div className="text-center border rounded-3xl py-4 shadow-aiBox">
+    <div className={`${id} text-center border rounded-3xl py-4 shadow-aiBox`}>
       <Image
         className="m-auto h-44"
         alt={`ai-logo-${id}`}

@@ -20,7 +20,8 @@ import { IAiTool } from "@/interfaces/main";
 //   });
 // }
 
-function KoAutoComplete(searchWord: any, arrAi: IAiTool[]): IAiTool[] {
+function KoAutoComplete(searchWord: string, arrAi: IAiTool[]): IAiTool[] {
+  
   return arrAi.map((item) => {
     const isFilteredOut =
       !item.ko.name.some((name) =>
@@ -37,7 +38,7 @@ function KoAutoComplete(searchWord: any, arrAi: IAiTool[]): IAiTool[] {
   });
 }
 
-function EnAutoComplete(searchWord: any, arrAi: IAiTool[]): IAiTool[] {
+function EnAutoComplete(searchWord: string, arrAi: IAiTool[]): IAiTool[] {
   return arrAi.map((item) => {
     const isFilteredOut =
       !item.en.name.some((name) =>
