@@ -89,9 +89,10 @@ const GridAiTools = ({ arrAi, searchWord }: IGridAiToolParams) => {
     gridItems.forEach((item, index) => {
       const targetItem = filteredData[index];
       if (targetItem && !targetItem.isFilteredOut) {
+        (item as HTMLElement).style.animation = "fadeIn 0.3s";
         (item as HTMLElement).style.display = "";
       } else {
-        (item as HTMLElement).style.display = "none";
+        (item as HTMLElement).style.animation = "fadeOut 0.3s forwards";
       }
     });
   }, [searchWord]);
@@ -121,6 +122,7 @@ const GridAiTools = ({ arrAi, searchWord }: IGridAiToolParams) => {
     </div>
   );
 };
+
 const AiGridItemInner = ({ id, imgUrl, nameKo, categoryKo }: IAiCardParams) => {
   return (
     <div className={`${id} text-center border rounded-3xl py-4 shadow-aiBox`}>
