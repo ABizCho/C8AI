@@ -35,7 +35,7 @@ export default function Layout({
           <div className="nav-container">
             <div className="logo-container">
               <Link href="/" className="logo-link">
-                <img
+                <Image
                   src="/images/logo.png"
                   alt="Logo"
                   height={50}

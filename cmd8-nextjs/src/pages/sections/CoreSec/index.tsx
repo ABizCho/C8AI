@@ -1,5 +1,5 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import tw from "tailwind-styled-components";
 
 import { IAiTool, IGridAiToolParams, IAiCardParams } from "@/interfaces/main";
@@ -34,7 +34,7 @@ const SearchBar = ({ searchWord, setSearchWord }: any): JSX.Element => {
       id="searchWord"
       name="searchWord"
       type="text"
-      className="coreSec-search rounded-full my-40 mx-12% py-auto  text-center text-base border h-14 w-3/4 lg:w-2/3 max-w-3xl"
+      className="coreSec-search rounded-full my-16 mx-12% py-auto  text-center text-base border h-14 w-3/4 lg:w-2/3 max-w-3xl"
       placeholder="이름, 용도, or 분야를 입력해주세요"
       value={searchWord}
       onChange={onChangeSearchWord}
@@ -55,13 +55,38 @@ const GridAiTools = ({ arrAi, searchWord }: IGridAiToolParams) => {
     filteredData = arrAi || [];
   }
 
-  console.log("filteredData:", filteredData);
+  const onAnimationEnd = (
+    e: React.AnimationEvent<HTMLDivElement>,
+    isFilteredOut: boolean
+  ) => {
+    if (isFilteredOut) {
+      e.currentTarget.style.display = "none";
+    } else {
+      e.currentTarget.style.display = "";
+    }
+  };
+
+  useEffect(() => {
+    if (searchWord === "") {
+      const gridItems = document.querySelectorAll(".grid-item");
+      gridItems.forEach((item) => {
+        (item as HTMLElement).style.display = "";
+      });
+    }
+  }, [searchWord]);
 
   return (
     <div className="container">
       <GridBox>
         {filteredData.map((v, idx) => (
-          <GridItemWrap key={idx} style={{ width: "270px" }}>
+          <GridItemWrap
+            key={idx}
+            style={{ width: "270px" }}
+            className={`${
+              v.isFilteredOut ? "filtered-out" : "filtered-in"
+            } transition-opacity duration-300 grid-item`}
+            onAnimationEnd={(e) => onAnimationEnd(e, v.isFilteredOut)}
+          >
             <AiGridItemInner
               key={v.id}
               imgUrl={v.imgUrl}
@@ -77,8 +102,14 @@ const GridAiTools = ({ arrAi, searchWord }: IGridAiToolParams) => {
 };
 const AiGridItemInner = ({ id, imgUrl, nameKo, categoryKo }: IAiCardParams) => {
   return (
-    <div style={{ textAlign: "center" }}>
-      <img src={imgUrl} />
+    <div className="text-center border rounded-3xl py-4 shadow-aiBox">
+      <Image
+        className="m-auto h-44"
+        alt={`ai-logo-${id}`}
+        src={imgUrl}
+        width={200}
+        height={170}
+      />
       <div>{id}</div>
       <div>{nameKo}</div>
       <div>{categoryKo}</div>

@@ -1,4 +1,5 @@
 export interface IAiTool {
+  [x: string]: any;
   id: string;
   imgUrl: string;
   ko: {

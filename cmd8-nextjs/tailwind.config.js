@@ -11,6 +11,9 @@ module.exports = {
       fontFamily: {
         morganBold: ["morganBold"],
       },
+      boxShadow: {
+        "aiBox": "rgba(0, 0, 0, 0.09) 0px 3px 12px 0px",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
