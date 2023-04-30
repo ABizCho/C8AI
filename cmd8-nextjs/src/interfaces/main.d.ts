@@ -19,8 +19,9 @@ export interface IAiTool {
 export interface IAiCardParams {
   id: string | undefined;
   imgUrl: string;
-  nameKo: string[] | string;
-  categoryKo: string[] | string | undefined;
+  nameKo: string[];
+  categoryKo: string[];
+  categoryKey: string;
   score: {
     avg: number;
     cnt: number;

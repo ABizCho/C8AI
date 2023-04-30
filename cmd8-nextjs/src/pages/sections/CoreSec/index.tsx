@@ -5,7 +5,8 @@ import tw from "tailwind-styled-components";
 import { IAiTool, IGridAiToolParams, IAiCardParams } from "@/interfaces/main";
 import { EnAutoComplete, KoAutoComplete } from "@/lib/util/Main";
 import { GridBox, GridItemWrap } from "@/components/ui/Grid";
-import { Rating } from "@/components/ui/Rating";
+import { Rating } from "@/pages/sections/CoreSec/Rating";
+import { Badge } from "./Badge";
 
 // import styled from "styled-components";
 
@@ -118,6 +119,7 @@ const GridAiTools = ({ arrAi = [], searchWord }: IGridAiToolParams) => {
               id={v.id}
               nameKo={v.ko?.name}
               categoryKo={v.ko?.category}
+              categoryKey={v.en?.category[0]}
               score={v.score}
             />
           </GridItemWrap>
@@ -132,22 +134,35 @@ const AiGridItemInner = ({
   imgUrl,
   nameKo,
   categoryKo,
+  categoryKey,
   score,
 }: IAiCardParams) => {
+  const categoryColors = {
+    default: "bg-gray",
+    chat: "bg-pink",
+    drawing: "bg-purple",
+  };
+
+  let bgColor;
+  if (categoryKey === "chat") {
+    bgColor = categoryColors.chat;
+  } else if (categoryKey === "drawing") {
+    bgColor = categoryColors.drawing;
+  } else {
+    bgColor = categoryColors.default;
+  }
+
   return (
     <div>
       <div className="relative">
         <div
-          className={`${id} bg-purple-400 text-center border rounded-3xl pb-4 shadow-aiBox overflow-hidden`}
+          className={`${id} ${bgColor}-400 text-center border rounded-3xl pb-4 shadow-aiBox overflow-hidden`}
         >
-          <div className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-purple-500 overflow-hidden">
-            <Image
-              src="/images/badge-brush2.png"
-              alt="Badge"
-              width={40}
-              height={40}
-            />
-          </div>
+          <Badge
+            className="category-badge"
+            categoryKey={categoryKey}
+            bgColor={bgColor}
+          />
           <Image
             className="m-auto h-52"
             alt={`ai-logo-${id}`}
