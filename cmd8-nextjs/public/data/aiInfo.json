@@ -9,6 +9,10 @@
     "en": {
       "name": ["chatGPT"],
       "category": ["chat", "writing", "write", "teach", "learn"]
+    },
+    "score": {
+      "avg": 3.6,
+      "cnt": 3
     }
   },
   {
@@ -29,6 +33,10 @@
         "designer",
         "art"
       ]
+    },
+    "score": {
+      "avg": 4.2,
+      "cnt": 2
     }
   },
   {
@@ -49,6 +57,10 @@
         "designer",
         "art"
       ]
+    },
+    "score": {
+      "avg": 4.3,
+      "cnt": 3
     }
   },
   {
@@ -69,6 +81,10 @@
         "designer",
         "art"
       ]
+    },
+    "score": {
+      "avg": 4.3,
+      "cnt": 4
     }
   },
   {
@@ -89,6 +105,10 @@
         "designer",
         "art"
       ]
+    },
+    "score": {
+      "avg": 4.3,
+      "cnt": 6
     }
   },
   {
@@ -109,6 +129,34 @@
         "designer",
         "art"
       ]
+    },
+    "score": {
+      "avg": 4.3,
+      "cnt": 3
+    }
+  },
+  {
+    "id": "7",
+    "imgUrl": "/images/logoAis/dalle.png",
+    "ko": {
+      "name": ["달리"],
+      "category": ["그림", "화가", "사진", "디자인", "디자이너"]
+    },
+    "en": {
+      "name": ["dalle"],
+      "category": [
+        "drawing",
+        "artist",
+        "picture",
+        "photo",
+        "design",
+        "designer",
+        "art"
+      ]
+    },
+    "score": {
+      "avg": 4.3,
+      "cnt": 2
     }
   },
   {
@@ -129,26 +177,10 @@
         "designer",
         "art"
       ]
-    }
-  },
-  {
-    "id": "dalle",
-    "imgUrl": "/images/logoAis/dalle.png",
-    "ko": {
-      "name": ["달리"],
-      "category": ["그림", "화가", "사진", "디자인", "디자이너"]
     },
-    "en": {
-      "name": ["dalle"],
-      "category": [
-        "drawing",
-        "artist",
-        "picture",
-        "photo",
-        "design",
-        "designer",
-        "art"
-      ]
+    "score": {
+      "avg": -1,
+      "cnt": 0
     }
   }
 ]

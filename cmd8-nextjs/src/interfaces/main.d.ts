@@ -10,13 +10,21 @@ export interface IAiTool {
     name: string[];
     category: string[];
   };
+  score: {
+    avg: number;
+    cnt: number;
+  };
 }
 
 export interface IAiCardParams {
   id: string | undefined;
   imgUrl: string;
-  nameKo: string[] | string | undefined;
+  nameKo: string[] | string;
   categoryKo: string[] | string | undefined;
+  score: {
+    avg: number;
+    cnt: number;
+  };
 }
 
 export interface IGridAiToolParams {
