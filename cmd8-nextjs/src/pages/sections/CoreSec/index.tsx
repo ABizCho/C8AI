@@ -132,8 +132,13 @@ const AiGridItemInner = ({ id, imgUrl, nameKo, categoryKo }: IAiCardParams) => {
         <div
           className={`${id} text-center border rounded-3xl pb-4 shadow-aiBox overflow-hidden`}
         >
-          <div className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-green-500">
-            <Image src="/images/logo.png" alt="Badge" width={40} height={40} />
+          <div className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-purple-500 overflow-hidden">
+            <Image
+              src="/images/badge-brush2.png"
+              alt="Badge"
+              width={40}
+              height={40}
+            />
           </div>
           <Image
             className="m-auto h-52"
