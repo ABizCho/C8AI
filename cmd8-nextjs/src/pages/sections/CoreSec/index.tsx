@@ -5,8 +5,8 @@ import tw from "tailwind-styled-components";
 import { IAiTool, IGridAiToolParams, IAiCardParams } from "@/interfaces/main";
 import { EnAutoComplete, KoAutoComplete } from "@/lib/util/Main";
 import { GridBox, GridItemWrap } from "@/components/ui/Grid";
-import { Rating } from "@/pages/sections/CoreSec/Rating";
-import { Badge } from "./Badge";
+import { Rating } from "@/components/ui/Rating";
+import { Badge } from "../../../components/ui/Badge";
 
 // import styled from "styled-components";
 
