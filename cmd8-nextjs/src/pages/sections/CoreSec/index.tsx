@@ -100,12 +100,12 @@ const GridAiTools = ({ arrAi = [], searchWord }: IGridAiToolParams) => {
   }, [searchWord]);
 
   return (
-    <div className="container">
+    <div>
       <GridBox>
         {filteredData.map((v, idx) => (
           <GridItemWrap
             key={idx}
-            style={{ width: "270px" }}
+            style={{ width: "300px" }}
             className={`${
               v.isFilteredOut ? "fade-out" : "fade-in"
             } transition-opacity duration-300 grid-item`}
@@ -127,17 +127,26 @@ const GridAiTools = ({ arrAi = [], searchWord }: IGridAiToolParams) => {
 
 const AiGridItemInner = ({ id, imgUrl, nameKo, categoryKo }: IAiCardParams) => {
   return (
-    <div className={`${id} text-center border rounded-3xl py-4 shadow-aiBox`}>
-      <Image
-        className="m-auto h-44"
-        alt={`ai-logo-${id}`}
-        src={imgUrl}
-        width={200}
-        height={170}
-      />
-      <div>{id}</div>
-      <div>{nameKo}</div>
-      <div>{categoryKo}</div>
+    <div>
+      <div className="relative">
+        <div
+          className={`${id} text-center border rounded-3xl pb-4 shadow-aiBox overflow-hidden`}
+        >
+          <div className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-green-500">
+            <Image src="/images/logo.png" alt="Badge" width={40} height={40} />
+          </div>
+          <Image
+            className="m-auto h-52"
+            alt={`ai-logo-${id}`}
+            src={imgUrl}
+            width={300}
+            height={0}
+          />
+          <div>{id}</div>
+          <div>{nameKo}</div>
+          <div>{categoryKo}</div>
+        </div>
+      </div>
     </div>
   );
 };

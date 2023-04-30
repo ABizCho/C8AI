@@ -22,5 +22,6 @@ export default function Main({ aiTools }: { aiTools: IAiTool[] }): JSX.Element {
 }
 
 export const ContentSection = tw.section`
+  w-full
   my-60
 `;
