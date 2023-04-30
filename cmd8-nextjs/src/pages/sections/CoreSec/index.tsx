@@ -4,9 +4,9 @@ import tw from "tailwind-styled-components";
 
 import { IAiTool, IGridAiToolParams, IAiCardParams } from "@/interfaces/main";
 import { EnAutoComplete, KoAutoComplete } from "@/lib/util/Main";
-import { GridBox, GridItemWrap } from "@/components/ui/Grid";
-import { Rating } from "@/components/ui/Rating";
-import { Badge } from "../../../components/ui/Badge";
+import { GridBox, GridItemWrap } from "@/components/ui/Common/Grid";
+import { Rating } from "@/components/ui/Main/Rating";
+import { Badge } from "../../../components/ui/Main/Badge";
 
 // import styled from "styled-components";
 
@@ -143,26 +143,13 @@ const AiGridItemInner = ({
     drawing: "bg-purple",
   };
 
-  let bgColor;
-  if (categoryKey === "chat") {
-    bgColor = categoryColors.chat;
-  } else if (categoryKey === "drawing") {
-    bgColor = categoryColors.drawing;
-  } else {
-    bgColor = categoryColors.default;
-  }
-
   return (
     <div>
       <div className="relative">
         <div
-          className={`${id} ${bgColor}-400 text-center border rounded-3xl pb-4 shadow-aiBox overflow-hidden`}
+          className={`${id} ${CardVariants[categoryKey]} text-center border rounded-3xl pb-4 shadow-aiBox overflow-hidden`}
         >
-          <Badge
-            className="category-badge"
-            categoryKey={categoryKey}
-            bgColor={bgColor}
-          />
+          <Badge className="category-badge" categoryKey={categoryKey} />
           <Image
             className="m-auto h-52"
             alt={`ai-logo-${id}`}
@@ -182,34 +169,15 @@ const AiGridItemInner = ({
   );
 };
 
-// const Rating = ({ scoreAvg }) => {
-//   // 점수를 0.5단위로 반올림하여 계산
-//   const rating = Math.round(scoreAvg * 2) / 2;
-
-//   return (
-//     <div className="flex items-center gap-1 mt-1">
-//       <div className="flex items-center gap-1">
-//         {[...Array(5)].map((_, index) => (
-//           <svg
-//             key={index}
-//             className={`w-5 h-5 ${
-//               rating > index ? "text-yellow-500" : "text-gray-400"
-//             }`}
-//             viewBox="0 0 20 20"
-//             fill="currentColor"
-//           >
-//             <path
-//               fillRule="evenodd"
-//               d="M10 15.973l4.338 2.512a1 1 0 001.413-1.058l-.826-5.076 3.507-3.413a1 1 0 00-.553-1.706L10 7.627l-1.819-4.592a1 1 0 00-.928-.581h-.014a1 1 0 00-.928.58L2.527 8.84a1 1 0 00-.553 1.706l3.506 3.413-.826 5.076a1 1 0 001.413 1.058L10 15.974z"
-//               clipRule="evenodd"
-//             />
-//           </svg>
-//         ))}
-//       </div>
-//       <p className="text-xs text-gray-500 font-medium">{scoreAvg}</p>
-//     </div>
-//   );
-// };
+export interface ICategoryVariants {
+  [key: string]: string;
+  chat: string;
+  drawing: string;
+}
+const CardVariants: ICategoryVariants = {
+  chat: `bg-pink-400`,
+  drawing: `bg-purple-400`,
+};
 
 const CategorySelectBar = (): JSX.Element => {
   return (
