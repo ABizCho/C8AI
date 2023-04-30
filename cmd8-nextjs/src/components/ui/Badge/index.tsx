@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { Tooltip } from "@material-ui/core";
+import { Tooltip } from "@mui/material";
 
 const Badge = ({ className, categoryKey, bgColor }: any): JSX.Element => {
   console.log("category", categoryKey);
