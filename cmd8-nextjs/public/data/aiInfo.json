@@ -37,6 +37,7 @@
     },
 
     "summary": "챗GPT는 대규모 언어모델로 대화 형태로 상호작용 하며 높은 퀄리티의 지식과 아이디어를 제공합니다.",
+    "redirectUrl": "https://chat.openai.com/",
     "derived": {
       "score": {
         "avg": 3.6,
@@ -76,6 +77,7 @@
     },
 
     "summary": "미드저니는 간단한 영어 입력으로 그림을 그려주는 생성형 AI서비스입니다. 디스코드로 사용합니다.",
+    "redirectUrl": "https://www.midjourney.com/",
     "derived": {
       "score": {
         "avg": 4.3,
@@ -114,6 +116,7 @@
       ]
     },
     "summary": "DALL-E의 후속모델로, 텍스트로부터 개념과 스타일을 결합하여 현실감 있는 이미지를 생성합니다.",
+    "redirectUrl": "https://openai.com/product/dall-e-2",
     "derived": {
       "score": {
         "avg": 3.9,
@@ -156,7 +159,7 @@
       ]
     },
     "summary": "네임릭스의 인공지능 비즈니스 이름 생성기로 간편하고 와닿는 비즈니스 이름을 만드세요. 단 몇 초 내에 독특하고 기억에 남는 이름을 얻을 수 있습니다.",
-
+    "redirectUrl": "https://namelix.com/",
     "derived": {
       "score": {
         "avg": 4.1,
@@ -197,7 +200,7 @@
     },
 
     "summary": "간단한 텍스트를 멋진 비디오로 만들어주는 인공지능 서비스입니다. 초보자도 쉽게 이용 가능하며, 다양한 언어와 목소리, 이미지, 비디오 클립, 배경음악 등을 활용할 수 있습니다.",
-
+    "redirectUrl": "https://fliki.ai/",
     "derived": {
       "score": {
         "avg": 4.0,
@@ -239,6 +242,7 @@
     },
 
     "summary": "높은 생산성의 AI툴이 통합된 새로운 프레젠테이션 제작 툴입니다. 아주 간단한 입력을 통해, AI가 자동으로 높은 퀄리티의 프레젠테이션 슬라이드와 스토리텔링을 담은 PPT를 만들어줍니다.",
+    "redirectUrl": "https://beta.tome.app/",
     "derived": {
       "score": {
         "avg": 3.6,
@@ -265,6 +269,7 @@
       ]
     },
     "summary": "자연어로 주석을 입력하여 쉽게 코드를 변경 및 구현할 수 있도록 도와주는 AI 코딩 도구입니다. 보일러플레이트 코드 작성을 최소화하고 API를 찾아 사용하며, 유닛 테스트도 생성합니다.",
+    "redirectUrl": "https://codeium.com/",
     "derived": {
       "score": {
         "avg": 4.4,
@@ -308,7 +313,7 @@
     },
 
     "summary": "텍스트기반 음악 생성 도구입니다. 전문성과 상관없이 두루 이용할 수 있습니다.",
-
+    "redirectUrl": "https://www.riffusion.com/",
     "derived": {
       "score": {
         "avg": 3.2,
@@ -352,7 +357,7 @@
     },
 
     "summary": "인기 아티스트들의 목소리를 이용하여 고급 AI 커버를 초 단위로 만들 수 있는 음악 제작 플랫폼입니다.",
-
+    "redirectUrl": "https://voicify.com/",
     "derived": {
       "score": {
         "avg": -1,

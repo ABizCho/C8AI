@@ -9,6 +9,7 @@ import { IAiCardParams } from "@/interfaces/main";
 import { Rating } from "../Rating";
 import { Badge } from "../Badge";
 import { truncateString } from "@/lib/util/Main";
+import Link from "next/link";
 
 export const AIGridCard = ({
   id,
@@ -16,6 +17,7 @@ export const AIGridCard = ({
   nameKo,
   summary,
   categoryKey,
+  redirectUrl,
   derived,
 }: IAiCardParams) => {
   const [isEnterMouseImage, setIsEnterMouseImage] = useState("deactivate");
@@ -43,14 +45,20 @@ export const AIGridCard = ({
               className={`${OverImageButton[isEnterMouseImage]} absolute top-1/3 w-full flex justify-center`}
             >
               <div className="buttons-inner-cover  flex flex-row">
-                <button className="bg-white mx-4 rounded-full w-20 h-20 flex flex-col justify-center place-items-center">
+                <Link
+                  href={redirectUrl}
+                  className="bg-white mx-4 rounded-full w-20 h-20 flex flex-col justify-center place-items-center"
+                >
                   <RxOpenInNewWindow className=" pt-1 w-6 h-6" />
                   <div>방문</div>
-                </button>
-                <button className="bg-white mx-4 rounded-full w-20 h-20 flex flex-col justify-center place-items-center">
+                </Link>
+                <Link
+                  href={"/"}
+                  className="bg-white mx-4 rounded-full w-20 h-20 flex flex-col justify-center place-items-center"
+                >
                   <TbScript className=" pt-1 w-6 h-6" />
                   <div>자세히</div>
-                </button>
+                </Link>
               </div>
             </div>
           </div>

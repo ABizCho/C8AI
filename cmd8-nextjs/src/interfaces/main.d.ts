@@ -11,7 +11,7 @@ export interface IAiTool {
     category: string[];
   };
   summary: string;
-
+  redirectUrl: string;
   derived: {
     score: {
       avg: number;
@@ -27,6 +27,7 @@ export interface IAiCardParams {
   nameKo: string[];
   categoryKey: string;
   summary: IAiTool.summary;
+  redirectUrl: IAiTool.redirectUrl;
   derived: IAiTool.derived;
 }
 

@@ -113,6 +113,7 @@ const GridAiTools = ({ arrAi = [], searchWord }: IGridAiToolParams) => {
               nameKo={v.ko?.name}
               summary={v.summary}
               categoryKey={v.en?.category[0]}
+              redirectUrl={v.redirectUrl}
               derived={v.derived}
             />
           </GridItemWrap>
