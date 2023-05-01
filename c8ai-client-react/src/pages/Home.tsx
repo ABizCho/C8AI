@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CoreSec from "../sections/home/CoreSec";
+import CoreSec from "./sections/home/CoreSec";
 
 export default function Home(): JSX.Element {
   const [arrAi, setArrAi] = useState([]);

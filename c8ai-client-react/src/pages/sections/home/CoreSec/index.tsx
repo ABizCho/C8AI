@@ -1,59 +1,76 @@
-import { GridItemWrap, GridBox } from "../../../components/Grid";
-import AIINFO from "../../../assets/data/aiInfo.json";
-
 import { useEffect, useState } from "react";
 
-interface AiDataType {
-  id: string;
-  imgUrl: string;
-  ko: {
-    name: string[];
-    category: string[];
-  };
-  en: {
-    name: string[];
-    category: string[];
-  };
-}
+import { GridItemWrap, GridBox } from "../../../../components/Grid";
+import AIINFO from "../../../../assets/data/aiInfo.json";
 
-interface AiCardProps {
-  id: string | undefined;
-  imgUrl: string;
-  nameKo: string[] | string | undefined;
-  categoryKo: string[] | string | undefined;
-}
+import {
+  IAiTool,
+  IAiCardParams,
+  IGridAiToolParams,
+} from "../../../../interface/main";
+import { useAllAItools } from "../../../../api";
 
-interface GridContainerProps {
-  arrAi: AiDataType[];
-  searchWord: string;
-}
-
-const CoreSec = () => {
-  const [arrAi, setArrAi] = useState<AiDataType[]>([]);
+export default function CoreSec() {
+  const [arrAi, setArrAi] = useState<IAiTool[]>([]);
+  const [isFetched, setIsFetched] = useState<boolean>(false);
   const [searchWord, setSearchWord] = useState<string>("");
+  const { data, isLoading, error, refetch } = useAllAItools();
+
+  // // local dev 빌드용
+  // useEffect(() => {
+  //   setArrAi(AIINFO as IAiTool[]);
+  //   console.log(arrAi);
+  // }, []);
 
   useEffect(() => {
-    setArrAi(AIINFO as AiDataType[]);
-    console.log(arrAi);
-  }, []);
+    async function fetchData() {
+      const result = await refetch(); // refetch 함수를 사용하여 데이터를 가져옵니다.
+      if (!error && !isLoading && result.data) {
+        // let arr: IAiTool[] = [
+        //   {
+        //     id: "",
+        //     imgUrl: "",
+        //     ko: {
+        //       name: [""],
+        //       category: [""],
+        //     },
+        //     en: {
+        //       name: [""],
+        //       category:[""]
+        //     }
+        //   }
+        // ]
+        // console.log(Object.values(result.data));
+        let arr: any = Object.values(result.data)[0];
+        console.log("useEffect-fetch", arr);
+
+        setArrAi(arr as IAiTool[]); // 가져온 데이터를
+      }
+    }
+    fetchData();
+  }, [refetch, error, isLoading, setArrAi]);
 
   return (
     <section className=" content-section">
       <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
       <div className="coreSec-itemBox">
         <CategorySelectBar />
-        <GridContainer arrAi={arrAi} searchWord={searchWord} />
+        <GridAiTools
+          arrAi={arrAi}
+          searchWord={searchWord}
+          isFetched={isFetched}
+        />
       </div>
     </section>
   );
-};
+}
 
-const GridContainer = ({ arrAi, searchWord }: GridContainerProps) => {
+const GridAiTools = ({ arrAi, searchWord, isFetched }: IGridAiToolParams) => {
   const enPattern = /[a-zA-Z]/;
   const koPattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-  let filteredData: AiDataType[];
+  let filteredData: IAiTool[];
 
-  function KoAutoComplete(searchWord: any, data: any): AiDataType[] {
+  function KoAutoComplete(searchWord: any, data: any): IAiTool[] {
     // console.log("ko-filter");
     return data.filter((item: any) => {
       return (
@@ -63,7 +80,7 @@ const GridContainer = ({ arrAi, searchWord }: GridContainerProps) => {
     });
   }
 
-  function EnAutoComplete(searchWord: any, data: any): AiDataType[] {
+  function EnAutoComplete(searchWord: any, data: any): IAiTool[] {
     // console.log("en-filter");
     return data.filter((item: any) => {
       return (
@@ -76,9 +93,11 @@ const GridContainer = ({ arrAi, searchWord }: GridContainerProps) => {
     filteredData = EnAutoComplete(searchWord, arrAi);
   } else if (koPattern.test(searchWord)) {
     filteredData = KoAutoComplete(searchWord, arrAi);
-  } else filteredData = arrAi;
+  }
+  // else filteredData = isFetched === true ? [] : arrAi;
+  else filteredData = arrAi;
 
-  console.log(filteredData);
+  console.log("GridAiTools: ", filteredData);
 
   return (
     <div className="container">
@@ -98,7 +117,7 @@ const GridContainer = ({ arrAi, searchWord }: GridContainerProps) => {
     </div>
   );
 };
-const AiGridItemInner = ({ id, imgUrl, nameKo, categoryKo }: AiCardProps) => {
+const AiGridItemInner = ({ id, imgUrl, nameKo, categoryKo }: IAiCardParams) => {
   return (
     <div style={{ textAlign: "center" }}>
       {/* <img src={imgUrl} /> */}
@@ -139,5 +158,3 @@ const CategorySelectBar = (): JSX.Element => {
     </div>
   );
 };
-
-export default CoreSec;

@@ -4,3 +4,5 @@ sensitives.md
 settings.py 
 
 __pycache__
+
+scrapper.py
