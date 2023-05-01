@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import { Tooltip } from "@mui/material";
-import { ICategoryVariants } from "@/pages/sections/CoreSec";
+import { ICategoryVariants } from "../AIGridCard";
 
 const Badge = ({
   className,
@@ -12,11 +12,15 @@ const Badge = ({
 }): JSX.Element => {
   console.log("category", categoryKey);
 
-  const badgeImgUrl = `/images/badge-${categoryKey}.png`;
+  const badgeImgUrl = `/images/badge/badge-${categoryKey}.png`;
 
   const BadgeVariants: ICategoryVariants = {
-    chat: `bg-pink-500 hover:bg-pink-400`,
+    chat: `bg-gray-400 hover:bg-gray-300`,
     drawing: `bg-purple-500 hover:bg-purple-400`,
+    video: `bg-fuchsia-500 hover:bg-fuchsia-400`,
+    music: `bg-pink-200 hover:bg-pink-100`,
+    office: `bg-teal-500 hover:bg-teal-600`,
+    developer: `bg-zinc-600 hover:bg-zinc-500`,
   };
 
   return (

@@ -10,22 +10,24 @@ export interface IAiTool {
     name: string[];
     category: string[];
   };
-  score: {
-    avg: number;
-    cnt: number;
+  summary: string;
+
+  derived: {
+    score: {
+      avg: number;
+      cnt: number;
+    };
+    favoriteCnt: number;
   };
 }
 
 export interface IAiCardParams {
   id: string | undefined;
-  imgUrl: string;
+  imgUrl: IAiTool.imgUrl;
   nameKo: string[];
-  categoryKo: string[];
   categoryKey: string;
-  score: {
-    avg: number;
-    cnt: number;
-  };
+  summary: IAiTool.summary;
+  derived: IAiTool.derived;
 }
 
 export interface IGridAiToolParams {

@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import tw from "tailwind-styled-components";
 
 import { IAiTool, IGridAiToolParams, IAiCardParams } from "@/interfaces/main";
 import { EnAutoComplete, KoAutoComplete } from "@/lib/util/Main";
-import { GridBox, GridItemWrap } from "@/components/ui/Common/Grid";
-import { Rating } from "@/components/ui/Main/Rating";
-import { Badge } from "../../../components/ui/Main/Badge";
 
-// import styled from "styled-components";
+import { GridBox, GridItemWrap } from "@/components/ui/Common/Grid";
+import { SearchBar } from "@/components/ui/Main/Core/SearchBar";
+import { AIGridCard } from "@/components/ui/Main/Core/AIGridCard";
 
 const CoreSec = ({ aiTools }: { aiTools: IAiTool[] }) => {
   const [searchWord, setSearchWord] = useState<string>("");
@@ -26,21 +24,16 @@ const CoreSec = ({ aiTools }: { aiTools: IAiTool[] }) => {
 
 export default CoreSec;
 
-const SearchBar = ({ searchWord, setSearchWord }: any): JSX.Element => {
-  const onChangeSearchWord = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchWord(event.target.value);
-  };
-
+const CategorySelectBar = (): JSX.Element => {
   return (
-    <input
-      id="searchWord"
-      name="searchWord"
-      type="text"
-      className="coreSec-search rounded-full my-16 mx-12% py-auto  text-center text-base border h-14 w-3/4 lg:w-2/3 max-w-3xl"
-      placeholder="이름, 용도, or 분야를 입력해주세요"
-      value={searchWord}
-      onChange={onChangeSearchWord}
-    />
+    <CategoryBox>
+      <div>All</div>
+      <div>그림</div>
+      <div>영상</div>
+      <div>3D렌더링</div>
+      <div>글쓰기</div>
+      <div></div>
+    </CategoryBox>
   );
 };
 
@@ -113,82 +106,19 @@ const GridAiTools = ({ arrAi = [], searchWord }: IGridAiToolParams) => {
             } transition-opacity duration-300 grid-item`}
             onAnimationEnd={(e) => onAnimationEnd(e, v.isFilteredOut)}
           >
-            <AiGridItemInner
+            <AIGridCard
               key={v.id}
               imgUrl={v.imgUrl}
               id={v.id}
               nameKo={v.ko?.name}
-              categoryKo={v.ko?.category}
+              summary={v.summary}
               categoryKey={v.en?.category[0]}
-              score={v.score}
+              derived={v.derived}
             />
           </GridItemWrap>
         ))}
       </GridBox>
     </div>
-  );
-};
-
-const AiGridItemInner = ({
-  id,
-  imgUrl,
-  nameKo,
-  categoryKo,
-  categoryKey,
-  score,
-}: IAiCardParams) => {
-  const categoryColors = {
-    default: "bg-gray",
-    chat: "bg-pink",
-    drawing: "bg-purple",
-  };
-
-  return (
-    <div>
-      <div className="relative">
-        <div
-          className={`${id} ${CardVariants[categoryKey]} text-center border rounded-3xl pb-4 shadow-aiBox overflow-hidden`}
-        >
-          <Badge className="category-badge" categoryKey={categoryKey} />
-          <Image
-            className="m-auto h-52"
-            alt={`ai-logo-${id}`}
-            src={imgUrl}
-            width={300}
-            height={0}
-          />
-          <div className="text-center grid place-items-center">
-            <div className="text-white text-xl font-bold mt-4">{nameKo[0]}</div>
-            <div className="pl-5">
-              <Rating scoreAvg={score.avg} scoreCnt={score.cnt} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export interface ICategoryVariants {
-  [key: string]: string;
-  chat: string;
-  drawing: string;
-}
-const CardVariants: ICategoryVariants = {
-  chat: `bg-pink-400`,
-  drawing: `bg-purple-400`,
-};
-
-const CategorySelectBar = (): JSX.Element => {
-  return (
-    <CategoryBox>
-      <div>All</div>
-      <div>그림</div>
-      <div>영상</div>
-      <div>3D렌더링</div>
-      <div>글쓰기</div>
-      <div></div>
-    </CategoryBox>
   );
 };
 
