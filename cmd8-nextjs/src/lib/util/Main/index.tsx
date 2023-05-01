@@ -61,4 +61,12 @@ function EnAutoComplete(searchWord: string, arrAi: IAiTool[]): IAiTool[] {
   });
 }
 
-export { KoAutoComplete, EnAutoComplete };
+const truncateString = (limit: number, text: string) => {
+  if (text.length > limit) {
+    return text.substring(0, limit) + "...";
+  } else {
+    return text;
+  }
+};
+
+export { KoAutoComplete, EnAutoComplete, truncateString };
