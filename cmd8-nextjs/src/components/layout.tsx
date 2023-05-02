@@ -90,7 +90,7 @@ const Header = (): JSX.Element => {
                 width={50}
                 className="h-9 w-9"
               />
-              <h1 className="logo-text ml-1 text-xl">CMD+8</h1>
+              <h1 className="logo-text ml-1 text-xl">AIGHT</h1>
             </Link>
           </div>
           <div className="col-sapn-1 self-center">
