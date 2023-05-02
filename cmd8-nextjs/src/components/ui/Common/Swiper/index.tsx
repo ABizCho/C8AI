@@ -7,6 +7,7 @@ import Link from "next/link";
 SwiperCore.use([Autoplay]);
 
 interface DataArrProps {
+  autoPlaySpeed: number;
   dataArr: {
     id: number;
     title: string;
@@ -15,18 +16,22 @@ interface DataArrProps {
   }[];
 }
 
-const AutoplayInfiniteSwiper: React.FC<DataArrProps> = ({ dataArr }) => {
+const AutoplayInfiniteSwiper: React.FC<DataArrProps> = ({
+  autoPlaySpeed,
+  dataArr,
+}) => {
   return (
-    <div className="w-[350px]">
+    <div className="w-[350px] ">
       <Swiper
+        className="swiper-wrapper w-[350px]"
         spaceBetween={15}
         slidesPerView={3}
         loop={true}
         autoplay={{
-          delay: 1000,
+          delay: 0,
           disableOnInteraction: false,
         }}
-        speed={1000}
+        speed={autoPlaySpeed}
         direction="horizontal"
         slidesOffsetBefore={1}
         setWrapperSize={true}
@@ -43,7 +48,7 @@ const AutoplayInfiniteSwiper: React.FC<DataArrProps> = ({ dataArr }) => {
                   <img
                     src={data.imageUrl}
                     alt={data.title}
-                    className="w-full h-auto"
+                    className="w-full h-[40px]"
                   />
                   <h3>{data.title}</h3>
                 </div>

@@ -23,15 +23,16 @@ const IntroSec = () => {
             트렌드를 놓치지 마세요!
           </h2>
         </div>
-        <div className="flex ">
+        <div className="flex mt-14">
           <div className="w-2/3 min-w-[51%]"></div>
           <div
             className="absolute left-1/2 w-0 h-0 border-b-black z-10
           border-r-[100px] border-r-transparent border-b-[250px]"
           ></div>
 
-          <div className="area-2 w-2/3 mt-14">
-            <AutoplayInfiniteSwiper dataArr={cardData} />
+          <div className="area-2 mt-8 w-2/3 flex flex-col gap-y-4">
+            <AutoplayInfiniteSwiper dataArr={cardData} autoPlaySpeed={4000} />
+            <AutoplayInfiniteSwiper dataArr={cardData} autoPlaySpeed={3000} />
           </div>
         </div>
       </div>

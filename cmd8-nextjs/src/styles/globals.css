@@ -224,3 +224,7 @@ body {
 main {
   min-height: calc(100vh - 258px); /* 화면 높이에서 header와 footer 높이 제외 */
 }
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
