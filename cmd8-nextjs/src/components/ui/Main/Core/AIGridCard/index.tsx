@@ -50,6 +50,8 @@ export const AIGridCard = ({
                   className="bg-white mx-4 rounded-full w-20 h-20 flex flex-col justify-center place-items-center"
                   prefetch={false}
                   passHref
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <RxOpenInNewWindow className=" pt-1 w-6 h-6" />
                   <div>방문</div>
