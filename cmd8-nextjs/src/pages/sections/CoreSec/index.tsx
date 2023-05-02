@@ -15,8 +15,8 @@ const CoreSec = ({ aiTools }: { aiTools: IAiTool[] }) => {
     <section className="content-section">
       <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
       <ToolsContainer>
-        <CategorySelectBar />
         <GridAiTools arrAi={aiTools} searchWord={searchWord} />
+        <CategorySelectBar />
       </ToolsContainer>
     </section>
   );
@@ -95,8 +95,13 @@ const GridAiTools = ({ arrAi = [], searchWord }: IGridAiToolParams) => {
   }, [searchWord]);
 
   return (
-    <div>
-      <GridBox>
+    <div
+      className="w-full 
+      max-w-[1325px]
+    md:w-3/4 md:my-auto
+    lg:3/4 h-[450px] md:h-[800px] overflow-auto overflow-x-hidden overflow-y-scroll"
+    >
+      <GridBox className="my-10 mx-3 place-content-center">
         {filteredData.map((v, idx) => (
           <GridItemWrap
             key={idx}
@@ -125,11 +130,14 @@ const GridAiTools = ({ arrAi = [], searchWord }: IGridAiToolParams) => {
 
 // 반응형으로 Layout을 변경할 경우, 이처럼 tailwind-styld-components를 사용하는 원칙 수립
 const ToolsContainer = tw.div`
-  flex flex-col gap-4 
-  md:flex-row
+  px-4
+  justify-center
+  flex flex-col flex-col-reverse
+  gap-4 md:flex-row
 `;
 
 const CategoryBox = tw.div`
-	flex flex-row mx-10 gap-4
-	md:flex-col
+	flex flex-row
+  mx-10 gap-4
+  md:flex-col
 `;
