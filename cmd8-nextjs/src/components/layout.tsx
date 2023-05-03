@@ -56,6 +56,10 @@ const CapsulizedHead = (): JSX.Element => {
 const Header = (): JSX.Element => {
   const [isOffCanvasOpen, setIsOffCanvasOpen] = useState(false);
 
+  const onClickHamburger = () => {
+    setIsOffCanvasOpen(!isOffCanvasOpen);
+  };
+
   useEffect(() => {
     const closeMenuOnClickOutside = (event: any) => {
       if (
@@ -116,60 +120,31 @@ const Header = (): JSX.Element => {
                 className="text-white font-inter text-sm px-4 py-2"
                 passHref
               >
-                블로그
+                커뮤니티
               </Link>
               <Link
                 href="/"
                 className="text-white font-inter text-xs px-4 py-2"
                 passHref
               >
-                About us
+                About AIGHT
               </Link>
               <Link
                 href="/"
                 className="text-white font-inter text-xs px-4 py-2"
                 passHref
               >
-                Contact
+                CONTACT
               </Link>
             </div>
           </div>
           <div className="col-sapn-1 self-center">
-            {/* 햄버거 버튼*/}
             <div className="self-center">
-              <button
-                type="button"
-                className="md:hidden text-white focus:outline-none"
-                aria-label="Toggle menu"
-                onClick={() => setIsOffCanvasOpen(!isOffCanvasOpen)}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  className="h-6 w-6 "
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
-              <div className={`side-canvas ${isOffCanvasOpen ? "open" : ""}`}>
-                <button onClick={() => setIsOffCanvasOpen(!isOffCanvasOpen)}>
-                  닫기
-                </button>
-                <Link
-                  href="/"
-                  className="block px-4 py-2 text-black font-inter text-sm"
-                  passHref
-                >
-                  홈
-                </Link>
-              </div>
+              <HamburgerButton onClickButton={onClickHamburger} />
+              <SideCanvas
+                isOffCanvasOpen={isOffCanvasOpen}
+                onClickClose={onClickHamburger}
+              />
             </div>
           </div>
         </div>
@@ -199,10 +174,52 @@ const Footer = () => {
         </section>
         <ul className="section_social"></ul>
         <small className="txt_copyright">
-          © <a href="https://www.ai-ght.com">AI-ght (cmd8)</a> All rights
+          © <a href="https://www.ai-ght.com">AIGHT (cmd8)</a> All rights
           reserved.
         </small>
       </div>
     </footer>
+  );
+};
+
+const SideCanvas = ({ onClickClose, isOffCanvasOpen }: any) => {
+  return (
+    <div className={`side-canvas ${isOffCanvasOpen ? "open" : ""}`}>
+      <button className="text-white" onClick={onClickClose}>
+        닫기
+      </button>
+      <Link
+        href="/"
+        className="block px-4 py-2 text-white font-inter text-sm"
+        passHref
+      >
+        홈
+      </Link>
+    </div>
+  );
+};
+const HamburgerButton = ({ onClickButton }: any): JSX.Element => {
+  return (
+    <button
+      type="button"
+      className="md:hidden text-white focus:outline-none"
+      aria-label="Toggle menu"
+      onClick={onClickButton}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        className="h-6 w-6 "
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
   );
 };

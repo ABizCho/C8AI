@@ -12,20 +12,19 @@ interface DataArrProps {
     id: number;
     title: string;
     link: string;
-    imageUrl: string;
   }[];
 }
 
-const AutoplayInfiniteSwiper: React.FC<DataArrProps> = ({
+const AutoLinearHorizSwiper: React.FC<DataArrProps> = ({
   autoPlaySpeed,
   dataArr,
 }) => {
   return (
-    <div className="w-[350px] ">
+    <div className="w-[350px]">
       <Swiper
         className="swiper-wrapper w-[350px]"
         spaceBetween={15}
-        slidesPerView={3}
+        slidesPerView={2}
         loop={true}
         autoplay={{
           delay: 0,
@@ -40,20 +39,22 @@ const AutoplayInfiniteSwiper: React.FC<DataArrProps> = ({
           <SwiperSlide
             key={index}
             dir="rtl"
-            className="text-white bg-slate-600"
+            className="text-white bg-slate-900 border-2 border-white rounded-xl text-sm p-[0.5px]"
           >
-            <div key={data.id} className="">
-              <Link href={data.link} className="card-container">
+            <Link
+              href={data.link}
+              className="card-container"
+              passHref
+              target="_blank"
+              rel="noreferrer"
+              prefetch={false}
+            >
+              <div key={data.id} className="">
                 <div className="card-content">
-                  <img
-                    src={data.imageUrl}
-                    alt={data.title}
-                    className="w-full h-[40px]"
-                  />
                   <h3>{data.title}</h3>
                 </div>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>
@@ -61,4 +62,4 @@ const AutoplayInfiniteSwiper: React.FC<DataArrProps> = ({
   );
 };
 
-export default AutoplayInfiniteSwiper;
+export default AutoLinearHorizSwiper;
