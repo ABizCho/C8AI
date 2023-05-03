@@ -21,11 +21,11 @@ const AIRankSlider: React.FC<DataArrProps> = ({ dataArr }) => {
   }, []);
 
   return (
-    <div className="ai-rank gap-2 w-full md:gap-3 md:w-5/6 flex flex-col">
+    <div className="ai-rank pt-3 gap-2 w-full md:gap-3 md:w-5/6 flex flex-col">
       {dataArr.map((data, index) => (
         <div
           key={index}
-          className={`ai-rank-card text-[7px] sm:text-sm text-white border-white rounded-xl  p-[0.5px]
+          className={`ai-rank-card text-[9px] sm:text-sm text-white border-white rounded-xl  p-[0.5px]
           
           ${
             index === activeCardIndex

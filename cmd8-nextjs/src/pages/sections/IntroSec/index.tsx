@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import AutoLinearHorizSwiper from "@/components/ui/Common/Swiper/AutoLinearHorizSwiper";
-import AIRankSlider from "@/components/ui/Main/Intro/AIRanSlider";
+import AIRankSlider from "@/components/ui/Main/Intro/AIRankSlider";
 
 const IntroSec = () => {
   return (
