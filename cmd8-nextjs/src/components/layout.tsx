@@ -140,6 +140,11 @@ const Header = (): JSX.Element => {
           </div>
           <div className="col-sapn-1 self-center">
             <div className="self-center">
+              <div className="hidden md:flex text-white font-bold hover:text-gray-400">
+                <Link href="/signIn" passHref>
+                  로그인
+                </Link>
+              </div>
               <HamburgerButton onClickButton={onClickHamburger} />
               <SideCanvas
                 isOffCanvasOpen={isOffCanvasOpen}
@@ -193,7 +198,14 @@ const SideCanvas = ({ onClickClose, isOffCanvasOpen }: any) => {
         className="block px-4 py-2 text-white font-inter text-sm"
         passHref
       >
-        홈
+        로그인
+      </Link>
+      <Link
+        href="/"
+        className="block px-4 py-2 text-white font-inter text-sm"
+        passHref
+      >
+        회원가입
       </Link>
     </div>
   );
