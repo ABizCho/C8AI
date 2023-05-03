@@ -25,12 +25,12 @@ const AIRankSlider: React.FC<DataArrProps> = ({ dataArr }) => {
       {dataArr.map((data, index) => (
         <div
           key={index}
-          className={`ai-rank-card text-[9px] sm:text-sm text-white border-white rounded-xl  p-[0.5px]
+          className={`ai-rank-card text-[9px] sm:text-sm  border-white rounded-xl  p-[0.5px]
           
           ${
             index === activeCardIndex
-              ? "bg-slate-600 transform scale-110 z-10"
-              : "bg-black text-slate-600"
+              ? "bg-slate-600 transform scale-110 z-10 text-white"
+              : "bg-black text-slate-400"
           } transition-all duration-500`}
         >
           <Link
