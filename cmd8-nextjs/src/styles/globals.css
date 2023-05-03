@@ -1,4 +1,27 @@
 @tailwind base;
+
+/* Firefox */
+ {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+/* Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 18px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  border: 3px solid var(--primary);
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -57,6 +80,9 @@
   --bpTablet: 768;
   --bpPhoneMedium: 576;
   --pbPhoneSmall: 325;
+
+  --primary: #5c5c5c;
+  --secondary: #1a1a1a;
 }
 
 /* Common */
@@ -96,8 +122,30 @@
 }
 
 /* Header */
+.side-canvas {
+  transform: translateX(150%);
+  transition: transform 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100rem;
+  width: 100%;
+  background-color: #1c1c20;
+  z-index: 50;
+  padding: 2rem;
+}
+
+.side-canvas.open {
+  transform: translateX(0%);
+}
 
 header {
+}
+
+.header-nav {
+  background-color: rgba(22, 22, 23, 0.8);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
 }
 
 .nav-bar {
@@ -127,8 +175,8 @@ header {
 
 .logo-text {
   font-family: "MorganBold", sans-serif;
-  font-size: 3rem;
-  color: #fff;
+  font-size: 2rem;
+  color: white;
 }
 
 /* Footer */
@@ -156,15 +204,8 @@ footer * {
 /* main */
 
 body {
-  /* color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
   padding: 0;
-  margin: 0;
+  margin-top: 0;
   font-family: "Open Sans", sans-serif;
   min-height: 100vh; /* 화면 높이 최소값 */
 }
@@ -175,4 +216,8 @@ body {
 
 main {
   min-height: calc(100vh - 258px); /* 화면 높이에서 header와 footer 높이 제외 */
+}
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
 }

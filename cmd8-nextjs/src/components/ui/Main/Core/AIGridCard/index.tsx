@@ -48,6 +48,10 @@ export const AIGridCard = ({
                 <Link
                   href={redirectUrl}
                   className="bg-white mx-4 rounded-full w-20 h-20 flex flex-col justify-center place-items-center"
+                  prefetch={false}
+                  passHref
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <RxOpenInNewWindow className=" pt-1 w-6 h-6" />
                   <div>방문</div>
@@ -55,6 +59,8 @@ export const AIGridCard = ({
                 <Link
                   href={"/"}
                   className="bg-white mx-4 rounded-full w-20 h-20 flex flex-col justify-center place-items-center"
+                  prefetch={false}
+                  passHref
                 >
                   <TbScript className=" pt-1 w-6 h-6" />
                   <div>자세히</div>
@@ -72,7 +78,10 @@ export const AIGridCard = ({
             />
           </div>
         </div>
-        <div className={`info-box relative ${CardVariants[categoryKey]}`}>
+        <div
+          className={`info-box relative ${CardVariants[categoryKey]}`}
+          style={{ minHeight: "142px" }}
+        >
           <div className="text-center grid place-items-center">
             <div className="">
               <div className="text-white text-xl font-bold mt-4">

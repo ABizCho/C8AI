@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -18,11 +19,13 @@ export default function App({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={client}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>CMD8 AI Rank</title>
+        <title>AI·GHT - 트렌디한 최고의 AI 서비스 모음 아잇</title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />
+
+      <Analytics />
     </QueryClientProvider>
   );
 }

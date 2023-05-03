@@ -26,7 +26,7 @@ const Badge = ({
   return (
     <Tooltip title={categoryKey}>
       <div
-        className={`${className} ${BadgeVariants[categoryKey]} absolute z-50 cursor-pointer  -top-2 -left-2 w-10 h-10 rounded-full overflow-hidden shadow-lg transition-all duration-300`}
+        className={`${className} ${BadgeVariants[categoryKey]} absolute z-20 cursor-pointer  -top-2 -left-2 w-10 h-10 rounded-full overflow-hidden shadow-lg transition-all duration-300`}
       >
         <Image src={badgeImgUrl} alt="Badge" width={40} height={40} />
       </div>
