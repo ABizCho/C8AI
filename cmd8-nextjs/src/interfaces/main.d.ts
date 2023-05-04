@@ -2,6 +2,7 @@ export interface IAiTool {
   [x: string]: any;
   id: string;
   imgUrl: string;
+  // 클라이언트를 재설계하자.
   ko: {
     name: string[];
     category: string[];

@@ -1,18 +1,16 @@
-# from django.urls import path
-# from .views import *
-
-# urlpatterns = [
-#     path('aitools/', views.create_aitools, name='create_aitools'),
-#     path('aitools/<int:pk>/', views.get_aitools, name='get_aitools'),
-#     path('aitools/all/', views.getall_aitools, name='getall_aitools'),
-# ]
-
 from django.urls import path
 from . import views
 
 urlpatterns = [
-    # path('/', ),
-    path('aitools/', views.create_aiTool, name='create_aiTool'),
-    path('aitools/<int:pk>/', views.get_aiTool, name='get_aiTool'),
-    path('aitools/all/', views.getall_aiTool, name='getall_aiTool'),
+    # AiTool paths
+    path('aitool/', views.create_aiTool, name='create_aiTool'),
+    path('aitool/<int:pk>/', views.get_aiTool, name='get_aiTool'),
+    path('aitool/all/', views.get_all_aiTools, name='get_all_aiTools'),
+
+    # AiToolCategory paths
+    path('aitool/category/', views.create_aiTool_category, name='create_aiTool_category'),
+    
+    path('aitool/category/<int:pk>/', views.get_aiTool_category, name='get_aiTool_category'),
+    path('aitool/category/all/', views.get_all_aiTool_categories, name='get_all_aiTool_categories'),
+    
 ]
