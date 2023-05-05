@@ -109,10 +109,10 @@ def get_all_aiTools_combinedCats(request):
                 'redirectUrl': ai_tool['redirectUrl'],
                 'derived': {
                     'score': {
-                        'avg': 0, # 여기에 실제 평균 점수를 적용
-                        'cnt': 0, # 여기에 실제 평가 수를 적용
+                        'avg': 4.5, # 여기에 실제 평균 점수를 적용
+                        'cnt': 10, # 여기에 실제 평가 수를 적용
                     },
-                    'favoriteCnt': 0, # 여기에 실제 즐겨찾기 수를 적용
+                    'favoriteCnt': 1000, # 여기에 실제 즐겨찾기 수를 적용
                 },
             })
         
