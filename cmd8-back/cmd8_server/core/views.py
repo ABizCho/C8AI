@@ -107,6 +107,13 @@ def get_all_aiTools_combinedCats(request):
                 },
                 'summary': ai_tool['summary'],
                 'redirectUrl': ai_tool['redirectUrl'],
+                'derived': {
+                    'score': {
+                        'avg': 0, # 여기에 실제 평균 점수를 적용
+                        'cnt': 0, # 여기에 실제 평가 수를 적용
+                    },
+                    'favoriteCnt': 0, # 여기에 실제 즐겨찾기 수를 적용
+                },
             })
         
         return JsonResponse({'aiTools': transformed_data}, status=status.HTTP_200_OK)
