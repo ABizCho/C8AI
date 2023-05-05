@@ -77,9 +77,12 @@ def get_all_aiTools_combinedCats(request):
             raise AiTool.DoesNotExist
         serializer = AiToolSerializer(ai_tools, many=True)
         serialized_data = serializer.data
-
         
-        # Transform the serialized data
+        # AiToolCategory를 한번에 가져와 ID를 기준으로 사전에 저장 : 성능개선용 (DB쿼리 수 감소)
+        all_categories = AiToolCategory.objects.all()
+        category_dict = {category.id: category for category in all_categories}
+
+        # 프론트-메인코어 인터페이스 맞게 가공
         transformed_data = []
         for ai_tool in serialized_data:
             category_ids = ai_tool['categories']
@@ -87,7 +90,7 @@ def get_all_aiTools_combinedCats(request):
             categories_en = []
             
             for category_id in category_ids:
-                category = AiToolCategory.objects.get(id=category_id)
+                category = category_dict[category_id]
                 categories_ko.append(category.name_set['ko'][0])
                 categories_en.append(category.name_set['en'][0])
             
