@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import AiTool, AiToolCategory
+from .models import AiTool, AiToolCategory, AiToolCategoryRelation
 
 ### Abstracts
 class AbstractBinNameSerializer(serializers.Serializer):
@@ -28,6 +28,15 @@ class AiToolSerializer(serializers.ModelSerializer):
     name_set = ToolNameSerializer()
     categories = serializers.PrimaryKeyRelatedField(queryset=AiToolCategory.objects.all(), many=True)
 
+    def create(self, validated_data):
+        categories_data = validated_data.pop('categories')
+        ai_tool = AiTool.objects.create(**validated_data)
+        
+        for index, category in enumerate(categories_data):
+            AiToolCategoryRelation.objects.create(ai_tool=ai_tool, category=category, order=index)
+        
+        return ai_tool
+    
     class Meta:
         model = AiTool
         fields = ('id', 'imgUrl', 'name_set', 'summary', 'redirectUrl', 'categories')

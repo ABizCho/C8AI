@@ -5,6 +5,7 @@ from rest_framework import status
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import default_storage
+from django.db.models import Case, When
 
 from .models import AiTool, AiToolCategory
 from .serializers import AiToolSerializer, AiToolCategorySerializer

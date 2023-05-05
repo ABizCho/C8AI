@@ -2,6 +2,7 @@ from django.db import models
 # from accounts.models import User
 
 
+
 class AiToolCategory(models.Model):
     id = models.AutoField(primary_key=True)
     name_set =  models.JSONField(default=dict)  # name_set: {ko: string[], en: string[] }
@@ -17,12 +18,23 @@ class AiTool(models.Model):
     name_set = models.JSONField(default=dict) # name_set: {ko: string[], en: string[]}
     summary = models.TextField(default='Unknown')
     redirectUrl = models.CharField(max_length=255, default='https://cmd8.vercel.app/')
-    categories = models.ManyToManyField(AiToolCategory, related_name='ai_tools') #N-M관계, 역참조이름 설정
+    
+    # categories = models.ManyToManyField(AiToolCategory, related_name='ai_tools') #N-M관계, 역참조이름 설정
+    categories = models.ManyToManyField(AiToolCategory, through='AiToolCategoryRelation', related_name='ai_tools')
     
     class Meta:
         managed = True #db에 테이블을 추가 및 삭제한다.
         db_table = 'core_aitool' 
 
+class AiToolCategoryRelation(models.Model):
+    ai_tool = models.ForeignKey(AiTool, on_delete=models.CASCADE)
+    category = models.ForeignKey(AiToolCategory, on_delete=models.CASCADE)
+    order = models.PositiveIntegerField()
+
+    class Meta:
+        unique_together = ('ai_tool', 'category')
+        ordering = ['order']
+        
 
 # ### User 기반
 # class AiToolScore(models.Model):
