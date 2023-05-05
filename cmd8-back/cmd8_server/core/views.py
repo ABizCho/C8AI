@@ -4,25 +4,38 @@ from rest_framework import status
 
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.core.files.storage import default_storage
 
 from .models import AiTool, AiToolCategory
 from .serializers import AiToolSerializer, AiToolCategorySerializer
+import os 
 
+##### AI TOOL ##### 
+import json
 
-##### AI TOOL #####
 @api_view(['POST'])
 @csrf_exempt
 def create_aiTool(request):
     try:
-        data = request.data
+        data = json.loads(request.POST['data'])
+        image = request.FILES['image']
+        image_extension = os.path.splitext(image.name)[1]
+        image_name = data['name_set']['en'][0] + image_extension
+
+        # 이미지를 S3에 업로드하고 이미지 URL 가져오기
+        default_storage.save(f'ai_tools/{image_name}', image)
+        image_url = default_storage.url(f'ai_tools/{image_name}')
+
+        # 이미지 URL을 요청 데이터에 추가하기
+        data['imgUrl'] = image_url
+
         serializer = AiToolSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     except Exception as e:
-        return JsonResponse({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+       return JsonResponse({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['GET'])
 @csrf_exempt

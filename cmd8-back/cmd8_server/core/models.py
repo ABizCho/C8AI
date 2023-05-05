@@ -13,6 +13,7 @@ class AiToolCategory(models.Model):
 class AiTool(models.Model):
     id = models.AutoField(primary_key=True)
     imgUrl = models.CharField(max_length=255)
+    
     name_set = models.JSONField(default=dict) # name_set: {ko: string[], en: string[]}
     summary = models.TextField(default='Unknown')
     redirectUrl = models.CharField(max_length=255, default='https://cmd8.vercel.app/')
