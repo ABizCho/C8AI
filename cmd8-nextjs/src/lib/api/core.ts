@@ -10,17 +10,17 @@ const API: AxiosInstance = axios.create({
 });
 
 export const getAllAITools = async (): Promise<IAiTool[]> => {
-  const response = await API.get<IAiTool[]>("/aitools/all/");
+  const response = await API.get<IAiTool[]>("/aitool/all/");
   return response.data;
 };
 
 export const getAItool = async (id: string): Promise<IAiTool> => {
-  const { data } = await API.get<IAiTool>(`/aitools/${id}/`);
+  const { data } = await API.get<IAiTool>(`/aitool/${id}/`);
   return data;
 };
 
 export const createAItool = async (tool: IAiTool): Promise<IAiTool> => {
-  const { data } = await API.post<IAiTool>("/aitools/", tool);
+  const { data } = await API.post<IAiTool>("/aitool/", tool);
   return data;
 };
 

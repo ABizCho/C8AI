@@ -66,6 +66,51 @@ def get_all_aiTools(request):
         return HttpResponse(status=status.HTTP_404_NOT_FOUND)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['GET'])
+@csrf_exempt
+def get_all_aiTools_combinedCats(request):
+    try:
+        ai_tools = AiTool.objects.prefetch_related('categories').all()
+        if not ai_tools:
+            raise AiTool.DoesNotExist
+        serializer = AiToolSerializer(ai_tools, many=True)
+        serialized_data = serializer.data
+
+        
+        # Transform the serialized data
+        transformed_data = []
+        for ai_tool in serialized_data:
+            category_ids = ai_tool['categories']
+            categories_ko = []
+            categories_en = []
+            
+            for category_id in category_ids:
+                category = AiToolCategory.objects.get(id=category_id)
+                categories_ko.append(category.name_set['ko'][0])
+                categories_en.append(category.name_set['en'][0])
+            
+            transformed_data.append({
+                'id': ai_tool['id'],
+                'imgUrl': ai_tool['imgUrl'],
+                'ko': {
+                    'name': ai_tool['name_set']['ko'],
+                    'category': categories_ko,
+                },
+                'en': {
+                    'name': ai_tool['name_set']['en'],
+                    'category': categories_en,
+                },
+                'summary': ai_tool['summary'],
+                'redirectUrl': ai_tool['redirectUrl'],
+            })
+        
+        return JsonResponse({'aiTools': transformed_data}, status=status.HTTP_200_OK)
+    except AiTool.DoesNotExist:
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 ####################
 
 

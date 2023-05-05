@@ -6,7 +6,8 @@ urlpatterns = [
     path('aitool/', views.create_aiTool, name='create_aiTool'),
     path('aitool/<int:pk>/', views.get_aiTool, name='get_aiTool'),
     path('aitool/all/', views.get_all_aiTools, name='get_all_aiTools'),
-
+    path('aitool/all/comb/', views.get_all_aiTools_combinedCats, name="get_all_aiTools_combinedCats"),
+    
     # AiToolCategory paths
     path('aitool/category/', views.create_aiTool_category, name='create_aiTool_category'),
     
