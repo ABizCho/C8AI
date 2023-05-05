@@ -64,14 +64,14 @@
     "en": {
       "name": ["Midjourney", "mid joruney"],
       "category": [
-        "drawing",
+        "image",
         "picture",
         "photo",
         "design",
         "designer",
         "artist",
         "generate",
-        "image",
+        "drawing",
         "character"
       ]
     },
@@ -104,14 +104,14 @@
     "en": {
       "name": ["DALL-E 2", "dalle"],
       "category": [
-        "drawing",
+        "image",
         "picture",
         "photo",
         "design",
         "designer",
         "artist",
         "generate",
-        "image",
+        "drawing",
         "character"
       ]
     },
@@ -431,14 +431,14 @@
     "en": {
       "name": ["Midjourney", "mid joruney"],
       "category": [
-        "drawing",
+        "image",
         "picture",
         "photo",
         "design",
         "designer",
         "artist",
         "generate",
-        "image",
+        "drawing",
         "character"
       ]
     },
@@ -471,14 +471,14 @@
     "en": {
       "name": ["DALL-E 2", "dalle"],
       "category": [
-        "drawing",
+        "image",
         "picture",
         "photo",
         "design",
         "designer",
         "artist",
         "generate",
-        "image",
+        "drawing",
         "character"
       ]
     },
