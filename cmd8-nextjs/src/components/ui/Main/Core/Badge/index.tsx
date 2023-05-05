@@ -15,11 +15,12 @@ const Badge = ({
   const badgeImgUrl = `/images/badge/badge-${categoryKey}.png`;
 
   const BadgeVariants: ICategoryVariants = {
-    chat: `bg-gray-400 hover:bg-gray-300`,
-    drawing: `bg-purple-500 hover:bg-purple-400`,
+    chat: `bg-cyan-900 hover:bg-cyan-800`,
+    image: `bg-purple-500 hover:bg-purple-400`,
     video: `bg-fuchsia-500 hover:bg-fuchsia-400`,
     music: `bg-pink-200 hover:bg-pink-100`,
-    office: `bg-teal-500 hover:bg-teal-600`,
+    writing: `bg-amber-500 hover:bg-amber-400`,
+    office: `bg-slate-600 hover:bg-slate-500`,
     developer: `bg-zinc-600 hover:bg-zinc-500`,
   };
 

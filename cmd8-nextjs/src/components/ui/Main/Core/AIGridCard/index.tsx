@@ -112,15 +112,14 @@ export const AIGridCard = ({
 
 export interface ICategoryVariants {
   [key: string]: string;
-  chat: string;
-  drawing: string;
 }
 const CardVariants: ICategoryVariants = {
-  chat: `bg-gray-500`,
-  drawing: `bg-purple-400`,
-  video: `bg-fuchsia-400`,
+  chat: `bg-cyan-800`,
+  image: `bg-purple-400`,
+  video: `bg-violet-500`,
   music: `bg-pink-400`,
-  office: `bg-teal-500`,
+  writing: `bg-amber-500`,
+  office: `bg-slate-500`,
   developer: `bg-zinc-700`,
 };
 
