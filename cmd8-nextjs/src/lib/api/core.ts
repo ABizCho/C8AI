@@ -1,15 +1,15 @@
 import axios, { AxiosInstance } from "axios";
 import { useQuery, UseQueryResult } from "react-query";
 
-import { IAiTool } from "../../interfaces/main";
-
-const HOST = "http://127.0.0.1:8000";
+import { IAiTool } from "@/interfaces/main";
+import { HOST } from "./env/HOST";
 
 const API: AxiosInstance = axios.create({
   baseURL: `${HOST}/core`,
 });
 
 export const getAllAITools = async (): Promise<IAiTool[]> => {
+  // console.log(HOST);
   const response = await API.get<IAiTool[]>("/aitool/allComb/");
   return response.data;
 };

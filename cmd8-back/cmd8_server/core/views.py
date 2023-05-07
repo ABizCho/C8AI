@@ -1,4 +1,5 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -16,6 +17,7 @@ import json
 
 @api_view(['POST'])
 @csrf_exempt
+@permission_classes([AllowAny])
 def create_aiTool(request):
     try:
         data = json.loads(request.POST['data'])
@@ -40,6 +42,7 @@ def create_aiTool(request):
 
 @api_view(['GET'])
 @csrf_exempt
+@permission_classes([AllowAny])
 def get_aiTool(request, pk):
     try:
         ai_tool = AiTool.objects.prefetch_related('categories').get(pk=pk)
@@ -55,6 +58,7 @@ def get_aiTool(request, pk):
 #### 해결법2 적용 해결했음 ( django 권장 해결법), 1번 대안은 safe=False 설정이었음
 @api_view(['GET'])
 @csrf_exempt
+@permission_classes([AllowAny])
 def get_all_aiTools(request):
     try:
         ai_tools = AiTool.objects.prefetch_related('categories').all() #prefetch사용해서 성능향상 도모: 어차피 메인페이지 항상 함께씀
@@ -71,6 +75,7 @@ def get_all_aiTools(request):
 
 @api_view(['GET'])
 @csrf_exempt
+@permission_classes([AllowAny])
 def get_all_aiTools_combinedCats(request):
     try:
         ai_tools = AiTool.objects.prefetch_related('categories').all()
@@ -129,6 +134,7 @@ def get_all_aiTools_combinedCats(request):
 
 @api_view(['POST'])
 @csrf_exempt
+@permission_classes([AllowAny])
 def create_aiTool_category(request):
     try:
         data = request.data
@@ -155,6 +161,7 @@ def get_aiTool_category(request, pk):
 
 @api_view(['GET'])
 @csrf_exempt
+@permission_classes([AllowAny])
 def get_all_aiTool_categories(request):
     try:
         ai_tool_categories = AiToolCategory.objects.all()

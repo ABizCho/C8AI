@@ -9,8 +9,10 @@ from django.http import HttpResponse, JsonResponse # for test
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('core/', include('core.urls')),
+    path('accounts/', include('accounts.urls'), name='accounts'),
+    path('core/', include('core.urls'), name='core'),
+    
 
 ]
 
-urlpatterns += [path('silk/', include('silk.urls', namespace='silk'))]
+urlpatterns += [path('silk/', include('silk.urls'))]
