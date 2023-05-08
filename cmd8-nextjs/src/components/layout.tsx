@@ -141,7 +141,7 @@ const Header = (): JSX.Element => {
           <div className="col-sapn-1 self-center">
             <div className="self-center">
               <div className="hidden md:flex text-white font-bold hover:text-gray-400">
-                <Link href="/signIn" passHref>
+                <Link href="/accounts/login" passHref>
                   로그인
                 </Link>
               </div>
