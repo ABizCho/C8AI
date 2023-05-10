@@ -7,7 +7,10 @@ from django.http import JsonResponse
 from rest_framework import status
 from .serializers import UserSerializer
 
-from django.contrib.auth.models import User
+from .models import User
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.exceptions import TokenError
+
 
 @api_view(['POST'])
 @csrf_exempt
@@ -37,14 +40,60 @@ def login_view(request):
 
     if user is not None:
         login(request, user)
-        return JsonResponse({'message': 'Login successful'}, status=status.HTTP_200_OK)
+        return JsonResponse({'message': 'Login successful', 'nickname': user.nickname}, status=status.HTTP_200_OK)
     else:
         return JsonResponse({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+    
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def social_login_view(request):
+    provider = request.data.get('provider')
+    social_id = request.data.get('social_id')
+    username = request.data.get('username')
+
+    if not provider or not social_id or not username:
+        return JsonResponse({'error': 'Please provide provider, social id and username'},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+    user = User.objects.filter(provider=provider, social_id=social_id).first()
+
+    if user is None:
+        # 소셜 로그인 사용자를 생성하는 로직
+        user_data = {
+            'username': username,
+            'provider': provider,
+            'social_id': social_id,
+        }
+        serializer = UserSerializer(data=user_data)
+        if serializer.is_valid():
+            user = serializer.save()
+        else:
+            return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    refresh = RefreshToken.for_user(user)
+
+    return JsonResponse({
+        'refresh': str(refresh),
+        'access': str(refresh.access_token),
+        'nickname': user.nickname
+    }, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def logout_view(request):
-    logout(request)
+    refresh_token = request.data.get('refresh')
+
+    if refresh_token is None:
+        return JsonResponse({'error': 'No refresh token provided'},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        token = RefreshToken(refresh_token)
+        token.blacklist()
+    except TokenError:
+        return JsonResponse({'error': 'Invalid token'},
+                            status=status.HTTP_400_BAD_REQUEST)
+
     return JsonResponse({'message': 'Logout successful'}, status=status.HTTP_200_OK)
 
 

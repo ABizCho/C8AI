@@ -31,7 +31,8 @@ class User(AbstractUser):
     ps_info_proc_agmt = models.CharField(verbose_name="개인정보처리방침동의여부", max_length=1, choices=YN_CHOICES, default="N")
     mkt_info_recv_agmt = models.CharField(verbose_name="마케팅정보수신동의여부", max_length=1, choices=YN_CHOICES, default="N")
     created_at = models.DateTimeField(verbose_name="계정 생성시간", auto_now_add=True)
-
+    provider = models.CharField(verbose_name="소셜 로그인 제공자", max_length=50, blank=True, null=True)
+    social_id = models.CharField(verbose_name="소셜 로그인 ID", max_length=200, blank=True, null=True)
     def save(self, *args, **kwargs):
         self.full_clean()
         super().save(*args, **kwargs)

@@ -11,8 +11,11 @@ export const register = async (userData: IRegister): Promise<void> => {
   await API.post("/register/", userData);
 };
 
-export const login = async (userData: ILogIn): Promise<void> => {
-  await API.post("/login/", userData);
+export const login = async (
+  userData: ILogIn
+): Promise<{ nickname: string }> => {
+  const response = await API.post("/login/", userData);
+  return response.data;
 };
 
 export const logout = async (): Promise<void> => {
