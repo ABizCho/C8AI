@@ -2,7 +2,7 @@ export type Gender = "M" | "F" | "N"; // M: Male, F: Female, N: Not selected
 export type Agreement = "Y" | "N";
 export type Status = "N" | "R" | "S"; // N: Normal, R: Rest, S: Stop
 
-export interface User {
+export interface IUser {
   username: string;
   status: string;
   password: string;
@@ -17,7 +17,7 @@ export interface User {
 
 export interface IRegister
   extends Pick<
-    User,
+    IUser,
     | "username"
     | "password"
     | "nickname"
@@ -29,4 +29,4 @@ export interface IRegister
     | "mkt_info_recv_agmt"
   > {}
 
-export interface ILogIn extends Pick<User, "username" | "password"> {}
+export interface ILogIn extends Pick<IUser, "username" | "password"> {}

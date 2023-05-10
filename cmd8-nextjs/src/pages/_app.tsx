@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { RecoilRoot } from "recoil";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -16,16 +17,18 @@ const client = new QueryClient({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={client}>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>AI·GHT - 트렌디한 최고의 AI 서비스 모음 아잇</title>
-        <meta name="description" content="" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Component {...pageProps} />
+    <RecoilRoot>
+      <QueryClientProvider client={client}>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <title>AI·GHT - 트렌디한 최고의 AI 서비스 모음 아잇</title>
+          <meta name="description" content="" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Component {...pageProps} />
 
-      <Analytics />
-    </QueryClientProvider>
+        <Analytics />
+      </QueryClientProvider>
+    </RecoilRoot>
   );
 }

@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-
 import TERMS from "./terms.json";
+import { userState } from "@/atoms/user";
+import { useRecoilValue } from "recoil";
 
 const siteTitle = "트렌디한 최고의 AI 서비스 모음, AIght";
 const siteDescription =
@@ -55,6 +56,7 @@ const CapsulizedHead = (): JSX.Element => {
 
 const Header = (): JSX.Element => {
   const [isOffCanvasOpen, setIsOffCanvasOpen] = useState(false);
+  const user = useRecoilValue(userState);
 
   const onClickHamburger = () => {
     setIsOffCanvasOpen(!isOffCanvasOpen);
@@ -141,14 +143,21 @@ const Header = (): JSX.Element => {
           <div className="col-sapn-1 self-center">
             <div className="self-center">
               <div className="hidden md:flex text-white font-bold hover:text-gray-400">
-                <Link href="/accounts/login" passHref>
-                  로그인
-                </Link>
+                {user === null ? (
+                  <Link href="/signIn" passHref>
+                    로그인
+                  </Link>
+                ) : (
+                  <Link href="/" passHref>
+                    {user?.nickname}
+                  </Link>
+                )}
               </div>
               <HamburgerButton onClickButton={onClickHamburger} />
               <SideCanvas
                 isOffCanvasOpen={isOffCanvasOpen}
                 onClickClose={onClickHamburger}
+                user={user}
               />
             </div>
           </div>
@@ -187,26 +196,39 @@ const Footer = () => {
   );
 };
 
-const SideCanvas = ({ onClickClose, isOffCanvasOpen }: any) => {
+const SideCanvas = ({ onClickClose, isOffCanvasOpen, user }: any) => {
   return (
     <div className={`side-canvas ${isOffCanvasOpen ? "open" : ""}`}>
       <button className="text-white" onClick={onClickClose}>
         닫기
       </button>
-      <Link
-        href="/"
-        className="block px-4 py-2 text-white font-inter text-sm"
-        passHref
-      >
-        로그인
-      </Link>
-      <Link
-        href="/"
-        className="block px-4 py-2 text-white font-inter text-sm"
-        passHref
-      >
-        회원가입
-      </Link>
+      {user === null ? (
+        <div>
+          {" "}
+          <Link
+            href="/"
+            className="block px-4 py-2 text-white font-inter text-sm"
+            passHref
+          >
+            로그인
+          </Link>
+          <Link
+            href="/"
+            className="block px-4 py-2 text-white font-inter text-sm"
+            passHref
+          >
+            회원가입
+          </Link>
+        </div>
+      ) : (
+        <Link
+          href="/"
+          passHref
+          className="block px-4 py-2 text-white font-inter text-sm"
+        >
+          {user?.nickname}
+        </Link>
+      )}
     </div>
   );
 };
