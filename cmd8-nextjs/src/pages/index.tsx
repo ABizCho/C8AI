@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import Layout from "@/components/layout";
 import Main from "./Main";
 import { IAiTool } from "@/interfaces/main";
-import { getAllAITools, useAllAItools } from "../lib/api/core";
+import { getAllAITools, useAllAItools } from "./api/core";
 import { GetStaticProps } from "next";
 
 import AIINFO from "../../public/data/aiInfo.json";

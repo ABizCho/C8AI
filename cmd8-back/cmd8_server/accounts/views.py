@@ -3,13 +3,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from rest_framework import status
-from .serializers import UserSerializer
 
-from .models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
+
+from .serializers import UserSerializer
+from .models import User
 
 
 @api_view(['POST'])
@@ -40,10 +41,18 @@ def login_view(request):
 
     if user is not None:
         login(request, user)
-        return JsonResponse({'message': 'Login successful', 'nickname': user.nickname}, status=status.HTTP_200_OK)
+        refresh = RefreshToken.for_user(user)
+        response = JsonResponse({
+            'message': 'Login successful',
+            'nickname': user.nickname,
+            'access': str(refresh.access_token),
+        }, status=status.HTTP_200_OK)
+        response.set_cookie('refresh', str(refresh), httponly=True)
+        return response
     else:
         return JsonResponse({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
-    
+
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def social_login_view(request):

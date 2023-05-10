@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/router";
-import { register } from "@/lib/api/accounts";
+import { register } from "@/pages/api/accounts";
 import { IRegister } from "@/interfaces/accounts";
 import InputField from "@/components/ui/Accounts/InputField";
 import Checkbox from "@/components/ui/Accounts/Checkbox";

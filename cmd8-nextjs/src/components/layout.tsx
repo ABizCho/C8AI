@@ -5,7 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import TERMS from "./terms.json";
 import { userState } from "@/atoms/user";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { logout } from "@/pages/api/accounts";
+import { useRouter } from "next/router";
 
 const siteTitle = "트렌디한 최고의 AI 서비스 모음, AIght";
 const siteDescription =
@@ -144,13 +146,15 @@ const Header = (): JSX.Element => {
             <div className="self-center">
               <div className="hidden md:flex text-white font-bold hover:text-gray-400">
                 {user === null ? (
-                  <Link href="/signIn" passHref>
+                  <Link href="/accounts/login" passHref>
                     로그인
                   </Link>
                 ) : (
-                  <Link href="/" passHref>
-                    {user?.nickname}
-                  </Link>
+                  // <Link href="/" passHref>
+                  //   {user?.nickname}
+                  //   <span className="text-xs">님</span>
+                  // </Link>
+                  <UserDropdownButton nickname={user.nickname} />
                 )}
               </div>
               <HamburgerButton onClickButton={onClickHamburger} />
@@ -164,6 +168,36 @@ const Header = (): JSX.Element => {
         </div>
       </nav>
     </header>
+  );
+};
+
+const UserDropdownButton = ({ nickname }: { nickname: string }) => {
+  const router = useRouter();
+  const setUser = useSetRecoilState(userState);
+
+  const onClickLogOut = async () => {
+    const response = await logout();
+    setUser(null); // Recoil 유저 상태 업데이트
+    router.push("/");
+  };
+
+  return (
+    <div className="relative">
+      <Link href="/" passHref>
+        <button className="text-white font-bold hover:text-gray-400">
+          {nickname}
+          <span className="text-xs">님</span>
+        </button>
+      </Link>
+      <div className="absolute top-10 right-0 bg-white py-2 rounded-md shadow-lg">
+        <Link href="/accounts/my-page" passHref>
+          <span className="block px-4 py-2 hover:bg-gray-200">마이페이지</span>
+        </Link>
+        <button onClick={onClickLogOut}>
+          <span className="block px-4 py-2 hover:bg-gray-200">로그아웃</span>
+        </button>
+      </div>
+    </div>
   );
 };
 

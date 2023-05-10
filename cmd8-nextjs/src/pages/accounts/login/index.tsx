@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/router";
-import { login } from "@/lib/api/accounts";
+import { login } from "@/pages/api/accounts";
 import { ILogIn } from "@/interfaces/accounts";
 import SocialLoginButton from "@/components/ui/Accounts/SocialLoginButton";
 import InputField from "@/components/ui/Accounts/InputField";
