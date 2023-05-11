@@ -48,6 +48,7 @@ def login_view(request):
             'access': str(refresh.access_token),
         }, status=status.HTTP_200_OK)
         response.set_cookie('refresh', str(refresh), 
+                            domain="https://ai-ght.com",
                             httponly=True # 스크립트상 접근불가
                             , samesite='Lax' 
                             , secure=True # 개발환경 테스트 False,

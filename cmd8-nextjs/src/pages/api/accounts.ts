@@ -68,5 +68,5 @@ export const logout = async (): Promise<void> => {
       Authorization: `Bearer ${Cookies.get("access")}`,
     },
   });
-  // Cookies.remove("access");
+  Cookies.remove("access");
 };
