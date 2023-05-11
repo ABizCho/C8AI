@@ -47,7 +47,13 @@ def login_view(request):
             'nickname': user.nickname,
             'access': str(refresh.access_token),
         }, status=status.HTTP_200_OK)
-        response.set_cookie('refresh', str(refresh), httponly=True)
+        response.set_cookie('refresh', str(refresh), 
+                            httponly=True # 스크립트상 접근불가
+                            , samesite='None' 
+                            , secure=False # 개발환경 테스트 False,
+                            # Strict 모드에서는 같은 도메인 범위에서만 해당 쿠키를 사용, Lax는 사용자가 페이지 이동 시 혹은 Form을 통한 Get 요청 시에만 허용함
+                            
+                            )
         return response
     else:
         return JsonResponse({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
@@ -90,20 +96,21 @@ def social_login_view(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def logout_view(request):
-    refresh_token = request.data.get('refresh')
-
-    if refresh_token is None:
-        return JsonResponse({'error': 'No refresh token provided'},
-                            status=status.HTTP_400_BAD_REQUEST)
-
     try:
+        refresh_token = request.COOKIES.get('refresh')
+        if refresh_token is None:
+            return JsonResponse({'error': 'No refresh token provided'},
+                                status=status.HTTP_400_BAD_REQUEST)
+
         token = RefreshToken(refresh_token)
         token.blacklist()
     except TokenError:
         return JsonResponse({'error': 'Invalid token'},
                             status=status.HTTP_400_BAD_REQUEST)
 
-    return JsonResponse({'message': 'Logout successful'}, status=status.HTTP_200_OK)
+    response = JsonResponse({'message': 'Logout successful'}, status=status.HTTP_200_OK)
+    response.delete_cookie('refresh')
+    return response
 
 
 ## 권한 있어야만 수행할 응답로직: 추후 구현

@@ -29,7 +29,6 @@ import { IRegister, ILogIn } from "@/interfaces/accounts"; // 추가한 import �
 
 const API: AxiosInstance = axios.create({
   baseURL: `${HOST}/accounts`,
-  //   baseURL: `127.0.0.1:8000/accounts`,
   withCredentials: true, // 쿠키를 보내기 위해 설정
 });
 
@@ -63,10 +62,11 @@ export const login = async (
 
 export const logout = async (): Promise<void> => {
   // 로그아웃 시점에 토큰 제거
-  Cookies.remove("access");
+
   await API.post("/logout/", null, {
     headers: {
       Authorization: `Bearer ${Cookies.get("access")}`,
     },
   });
+  // Cookies.remove("access");
 };
