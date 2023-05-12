@@ -1,6 +1,8 @@
 # CMD8 _ AI-GHT
 <img src=./brandsrc/logo/C8AI_alt_2_notxt.png width=50%>
 
+[AI-GHT DEMO](https://ai-ght.com/)
+
 'AI-GHT'는 'CMD8'의 첫번째 서비스입니다. <br>
 
 <창세기>를 보면 조물주는 7일 동안 천지만물을 창조합니다. <br>
