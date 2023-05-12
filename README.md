@@ -10,6 +10,6 @@
 사용자가 커맨드를 사용하듯 간단하게 최적의 AI를 찾고, 사용하여, 새로운 세상을 창조하도록 하는 CMD8의 비전을 제시하는 서비스 입니다.
 
 <a href="https://ai-ght.com/">
-  ![image](https://github.com/ABizCho/CMD8-AIght/assets/65459616/2176149e-b1f7-47c6-966e-1be4a22826bc)
+  <img src="https://github.com/ABizCho/CMD8-AIght/assets/65459616/2176149e-b1f7-47c6-966e-1be4a22826bc"></img>
 </a>
 
