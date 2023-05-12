@@ -1,5 +1,5 @@
 # CMD8 _ AI-GHT
-<img src=./brandsrc/logo/C8AI_1_notxt.png width=60%>
+<img src=./brandsrc/logo/C8AI_alt_2_notxt.png width=50%>
 
 'AI-GHT'는 'CMD8'의 첫번째 서비스입니다. <br>
 
@@ -9,7 +9,7 @@
 'AIGHT'는 '에이트'의 저자 이지성씨의 'AI시대, 대체되지 않는 나를 만드는 법'에 대한 또 다른 솔루션을 제시하며 <br>
 사용자가 커맨드를 사용하듯 간단하게 최적의 AI를 찾고, 사용하여, 새로운 세상을 창조하도록 하는 CMD8의 비전을 제시하는 서비스 입니다.
 
-<a href="https://ai-ght.com/">
+<!-- <a href="https://ai-ght.com/">
   <img src="https://github.com/ABizCho/CMD8-AIght/assets/65459616/2176149e-b1f7-47c6-966e-1be4a22826bc"></img>
 </a>
-
+ -->
