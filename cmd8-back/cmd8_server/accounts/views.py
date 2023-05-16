@@ -46,11 +46,12 @@ def login_view(request):
             'message': 'Login successful',
             'nickname': user.nickname,
             'access': str(refresh.access_token),
+            # 'refresh': str(refresh)
         }, status=status.HTTP_200_OK)
         response.set_cookie('refresh', str(refresh), 
-                            domain="https://ai-ght.com",
+                            # domain="ai-ght.com",
                             httponly=True # 스크립트상 접근불가
-                            , samesite='Lax' 
+                            , samesite='None' 
                             , secure=True # 개발환경 테스트 False,
                             # Strict 모드에서는 같은 도메인 범위에서만 해당 쿠키를 사용, Lax는 사용자가 페이지 이동 시 혹은 Form을 통한 Get 요청 시에만 허용함
                             
