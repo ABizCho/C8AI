@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  web:
+    restart: always
+    image: django
+    depends_on:
+      - db
+    build:
+      context: ./cmd8_server
+      dockerfile: Dockerfile
+
+    command:
+      ["gunicorn", "cmd8_server.wsgi:application", "--bind", "0.0.0.0:8000"]
+    volumes:
+      - ./cmd8_server:/cmd8_server
+    expose:
+      - 8000
+    env_file:
+      - ./cmd8_server/.env
+  nginx:
+    restart: always
+    image: nginx:1.19.0-alpine
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - static_volume:/home/app/web/static
+      - media_volume:/home/app/web/media
+    ports:
+      - "80:80"
+  db:
+    image: postgres:13
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: cmd8
+      DJANGO_SETTINGS_MODULE: cmd8_server.settings
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
