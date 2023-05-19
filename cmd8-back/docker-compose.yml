@@ -33,7 +33,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      POSTGRES_USER: postgres
+      POSTGRES_USER: test_super
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: cmd8
       DJANGO_SETTINGS_MODULE: cmd8_server.settings
