@@ -2,4 +2,4 @@
 
 // export const HOST = LOCAL_API_HOST;
 // export const HOST = "http://127.0.0.1:8000";
-export const HOST = "http://api.ai-ght.com";
+export const HOST = "https://api.ai-ght.com";
