@@ -49,7 +49,7 @@ def login_view(request):
             # 'refresh': str(refresh)
         }, status=status.HTTP_200_OK)
         response.set_cookie('refresh', str(refresh), 
-                            # domain="ai-ght.com",
+                            domain="ai-ght.com",
                             httponly=True # 스크립트상 접근불가
                             , samesite='None' 
                             , secure=True # 개발환경 테스트 False,
