@@ -11,6 +11,7 @@ from django.db.models import Case, When
 from .models import AiTool, AiToolCategory
 from .serializers import AiToolSerializer, AiToolCategorySerializer
 import os 
+import uuid
 
 ##### AI TOOL ##### 
 import json
@@ -23,7 +24,8 @@ def create_aiTool(request):
         data = json.loads(request.POST['data'])
         image = request.FILES['image']
         image_extension = os.path.splitext(image.name)[1]
-        image_name = data['name_set']['en'][0] + image_extension
+        # image_name = data['name_set']['en'][0] + image_extension
+        image_name = f'{uuid.uuid4()}{image_extension}'
 
         # 이미지를 S3에 업로드하고 이미지 URL 가져오기
         default_storage.save(f'ai_tools/{image_name}', image)
